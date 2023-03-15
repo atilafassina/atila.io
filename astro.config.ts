@@ -20,8 +20,12 @@ export default defineConfig({
           /channel/.test(item.url) ||
           /talks/.test(item.url)
         ) {
+          /**
+           * type not working well for changefreq
+           */
+          // @ts-expect-error
           item.changefreq = "weekly";
-          item.lastmod = new Date();
+          item.lastmod = new Date().toISOString();
           item.priority = 1;
         }
 
