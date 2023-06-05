@@ -16,6 +16,21 @@
       "source": "/twitter",
       "destination": "https://twitter.com/AtilaFassina",
       "permanent": true
+    },
+    {
+      "source": "/linkedin",
+      "destination": "https://linkedin.com/in/AtilaFassina",
+      "permanent": true
+    },
+    {
+      "source": "/smashingmag",
+      "destination": "https://smashingmagazine.com/author/atila-fassina",
+      "permanent": true
+    },
+    {
+      "source": "/github",
+      "destination": "https://github.com/atilafassina",
+      "permanent": true
     }
   ]
 }
