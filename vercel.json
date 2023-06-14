@@ -4,7 +4,7 @@
   "redirects": [
     {
       "source": "/youtube",
-      "destination": "https://youtube.com/@AtilaIO",
+      "destination": "https://youtube.com/AtilaIO",
       "permanent": false
     },
     {
