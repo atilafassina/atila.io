@@ -1,18 +1,18 @@
-import { z } from "zod";
+import { z } from "zod"
 
 export const talkTypesSchema = z.union([
   z.literal("workshop"),
   z.literal("conference"),
   z.literal("meetup"),
   z.literal("podcast"),
-]);
+])
 
 export const articlePlatformSchema = z.union([
   z.literal("smashing"),
   z.literal("dev-to"),
   z.literal("css-tricks"),
   z.literal("xata"),
-]);
+])
 
 export const talkSchema = z.object({
   id: z.string(),
@@ -27,9 +27,9 @@ export const talkSchema = z.object({
   published: z.boolean().catch(false),
   isFuture: z.boolean().catch(true),
   place: z.string().optional().nullable(),
-});
+})
 
-export const talkListSchema = z.array(talkSchema);
+export const talkListSchema = z.array(talkSchema)
 
 export const articleListSchema = z.array(
   z.object({
@@ -40,11 +40,11 @@ export const articleListSchema = z.array(
     url: z.string().optional().nullable(),
     platform: articlePlatformSchema,
   })
-);
+)
 
-export type ArticlePlatformType = z.infer<typeof articlePlatformSchema>;
-export type TalkType = z.infer<typeof talkTypesSchema>;
+export type ArticlePlatformType = z.infer<typeof articlePlatformSchema>
+export type TalkType = z.infer<typeof talkTypesSchema>
 
 export type YearlyMap = {
-  [key: string]: z.infer<typeof talkListSchema>;
-};
+  [key: string]: z.infer<typeof talkListSchema>
+}

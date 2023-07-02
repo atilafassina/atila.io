@@ -13,7 +13,6 @@ export async function get(ctx: Record<"site", string>) {
       customData: `<language>en-us</language>`,
     }));
 
-  console.log(items[0]);
   return rss({
     stylesheet: "/rss/styles.xsl",
     title: "Atila's Talks",
