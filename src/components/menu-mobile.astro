@@ -1,15 +1,15 @@
 ---
-import A from "./icons/a.astro";
-import ThemeToggler from "./theme-toggler.astro";
+import A from "./icons/a.astro"
+import ThemeToggler from "./theme-toggler.astro"
 
-const items = ["Channel", "Talks", "Writing", "About"]; //, 'Uses']
-const activeStyle = (isActive: boolean) => (isActive ? "text-orange-500" : "");
+const items = ["Channel", "Talks", "Writing", "About"] //, 'Uses']
+const activeStyle = (isActive: boolean) => (isActive ? "text-orange-500" : "")
 
-const pathname = new URL(Astro.request.url).pathname;
+const pathname = new URL(Astro.request.url).pathname
 ---
 
 <nav
-  class="sm:hidden z-50 w-full pt-7 pb-5 fixed top-0 dark:bg-black bg-zinc-100"
+  class="sm:hidden z-50 w-full pt-7 pb-5 fixed bottom-0 dark:bg-black dark:bg-opacity-75 bg-zinc-100"
 >
   <div class="absolute right-3 top-3 z-50">
     <ThemeToggler />
@@ -22,7 +22,7 @@ const pathname = new URL(Astro.request.url).pathname;
   <input type="checkbox" id="menu-trigger" class="hidden" />
   <label
     for="menu-trigger"
-    class="w-7 h-4 z-50 fixed top-3 left-3 flex flex-col items-center justify-between rounded-md focus:outline-none focus:ring-2 focus:ring-inset dark:focus:ring-white focus:ring-black"
+    class="w-7 h-4 z-50 fixed bottom-4 left-3 flex flex-col items-center justify-between rounded-md focus:outline-none focus:ring-2 focus:ring-inset dark:focus:ring-white focus:ring-black"
     aria-controls="mobile-menu"
   >
     <span class="sr-only">toggle navigation menu</span>
@@ -34,7 +34,7 @@ const pathname = new URL(Astro.request.url).pathname;
     <ul class="w-full">
       {
         items.map((item) => {
-          const path = "/" + item.toLowerCase();
+          const path = "/" + item.toLowerCase()
           return (
             <li class="text-4xl">
               <a
@@ -46,7 +46,7 @@ const pathname = new URL(Astro.request.url).pathname;
                 {item}
               </a>
             </li>
-          );
+          )
         })
       }
     </ul>

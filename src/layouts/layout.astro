@@ -12,14 +12,17 @@ export type Props = {
 }
 
 const { metas } = Astro.props
+
+
 ---
 
-<script
+{import.meta.env.PROD && <script
   is:inline
+  is
   defer
   src="https://static.cloudflareinsights.com/beacon.min.js"
   data-cf-beacon='{"token": "6f7dd11497db4b548570eb8ebf1f5b10", "spa": false}'
-></script>
+></script>}
 
 <script is:inline>
   console.log(
@@ -77,12 +80,12 @@ const { metas } = Astro.props
   <body
     class="grid-rows-[auto_1fr_auto] bg-dotted bg-[length:22px_22px] dark:bg-[length:400%_400%] dark:bg-dark dark:animate-bkg-move grid min-h-screen dark:text-white text-black font-sans"
   >
-    <div>
+    <div class="order-2 sm:order-1">
       <Navigation />
       <MenuMobile />
     </div>
     <main
-      class="grid place-items-center mb-32 text-left animate-blur-in font-light"
+      class="grid place-items-center mb-32 text-left animate-blur-in font-light order-1 sm:order-2"
     >
       <slot />
     </main>
