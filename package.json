@@ -22,6 +22,7 @@
     "@astrojs/tailwind": "^3.1.3",
     "@astrojs/vercel": "^3.7.0",
     "@fontsource/jost": "^4.5.13",
+    "@supabase/supabase-js": "^2.26.0",
     "@xata.io/client": "^0.24.3",
     "astro": "^2.8.1",
     "react": "^18.2.0",
