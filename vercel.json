@@ -44,6 +44,11 @@
       "destination": "https://twitter.com/AtilaFassina",
       "permanent": false
     },
+        {
+      "source": "/x",
+      "destination": "https://twitter.com/AtilaFassina",
+      "permanent": false
+    },
     {
       "source": "/linkedin",
       "destination": "https://linkedin.com/in/AtilaFassina",
