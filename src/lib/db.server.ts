@@ -18,7 +18,12 @@ export const fetchArticles = async () => {
 }
 
 export const fetchAppearances = async () => {
-  const { data: records } = await supabase.from("talks").select("*")
+  const { data: records } = await supabase
+    .from("talks")
+    .select("*")
+    .order("date", {
+      ascending: false,
+    })
 
   return talkListSchema.parse(records)
 }
