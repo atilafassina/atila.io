@@ -1,5 +1,5 @@
 ---
-import avatar from "../images/avatar-nobg.png"
+import avatar from "../images/atila-2023.webp"
 import AtilaFassina from "./icons/atila-fassina.astro"
 ---
 
@@ -25,8 +25,12 @@ import AtilaFassina from "./icons/atila-fassina.astro"
     </h2>
   </div>
   <div
-    class="block hover:animate-half-spin animate-bkg-fast-move bg-[length:400px_400px] w-48 h-48 bkg-move border-4 rounded-full overflow-hidden bg-gradient-to-tr from-red-500 via-orange-500 to-amber-500 border-red-500"
+    class="block w-44 h-44 bg-white border-2 border-white rounded-full overflow-visible"
   >
-    <img class="rounded-full" src={avatar} alt="Atila's face" />
+    <img
+      class="rounded-full grayscale-[50] scale-105 hover:scale-125 hover:grayscale-0 transition-all ease-in-out"
+      src={avatar}
+      alt="Atila's face"
+    />
   </div>
 </header>
