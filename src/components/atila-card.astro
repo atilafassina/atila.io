@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets"
 import avatar from "../images/atila-2023.webp"
 import AtilaFassina from "./icons/atila-fassina.astro"
 ---
@@ -27,7 +28,7 @@ import AtilaFassina from "./icons/atila-fassina.astro"
   <div
     class="block w-44 h-44 bg-white border-2 border-white rounded-full overflow-visible"
   >
-    <img
+    <Image
       class="rounded-full grayscale-[50] scale-105 hover:scale-125 hover:grayscale-0 transition-all ease-in-out"
       src={avatar}
       alt="Atila's face"

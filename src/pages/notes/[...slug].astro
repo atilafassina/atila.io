@@ -1,0 +1,26 @@
+---
+import type { GetStaticPaths } from "astro"
+import { getCollection } from "astro:content"
+import Layout from "~/layouts/layout.astro"
+import Notes from "~/layouts/notes.astro"
+
+export const getStaticPaths = (async () => {
+  const noteEntries = await getCollection("notes")
+
+  return noteEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }))
+}) satisfies GetStaticPaths
+
+const { entry } = Astro.props
+const { Content } = await entry.render()
+
+export const prerender = true
+---
+
+<Layout>
+  <Notes>
+    <Content />
+  </Notes>
+</Layout>
