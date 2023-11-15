@@ -1,12 +1,8 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    /*
-     * @TODO
-     * waiting astro config to update
-     */
-    "ignoreDeprecations": "5.0",
     "baseUrl": ".",
+    "allowJs": true,
     "paths": {
       "~/*": ["./src/*"]
     }

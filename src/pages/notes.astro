@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content"
+import Layout from "~/layouts/layout.astro"
+import WritingCard from "~/components/card-writing.astro"
+import PageIntro from "~/components/page-intro.astro"
+import PageHeader from "~/components/page-header.astro"
+
+const entries = await getCollection("notes")
+console.log(entries[0])
+---
+
+<Layout>
+  <header class="w-11/12 mx-auto max-w-7xl">
+    <PageHeader rssUrl="/notes-rss.xml">Notes & Thoughts</PageHeader>
+    <PageIntro>
+      Writing is my go-to alternative to sedimenting my knowledge. By writing I
+      can anticipate my first questions and deepen my knowledge on topics, so
+      when I reach a minimal degree of understanding I jump to a text edi tor.
+      This has helped me a lot in collaborating with wonderful people who just
+      motivate me in going further. My most recent articles can be found on{" "}
+      <a
+        href="https://smashingmagazine.com/author/atila-fassina/"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Atila's author page on Smashing Magazine"
+        class="dark:text-amber-200 text-amber-600 hover:underline hover:decoration-dotted hover:underline-offset-2"
+      >
+        Smashing Magazine
+      </a>
+      .
+    </PageIntro>
+  </header>
+  <ul
+    class="grid gap-16 mt-32 px-4 max-w-[90rem] mx-auto lg:grid-cols-2 2xl:grid-cols-3"
+  >
+    {
+      entries.length > 0 &&
+        entries.map((entry) => (
+          <WritingCard
+            url={`notes/${entry.slug}`}
+            publishAt={entry.data.date.toISOString()}
+            title={entry.data.title}
+            description={entry.data.description}
+            platform="podcast"
+          />
+        ))
+    }
+  </ul>
+</Layout>
