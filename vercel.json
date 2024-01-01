@@ -73,6 +73,11 @@
       "source": "/bluesky",
       "destination": "https://bsky.app/profile/atila.io",
       "permanent": false
+    },
+    {
+      "source": "/sponsor",
+      "destination": "https://github.com/sponsors/atilafassina",
+      "permanent": false
     }
   ]
 }
