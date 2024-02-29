@@ -3,8 +3,6 @@ import PageHeader from "~/components/page-header.astro"
 import PageIntro from "~/components/page-intro.astro"
 import VideoCard from "~/components/card-video.astro"
 import Layout from "~/layouts/layout.astro"
-import { google } from "googleapis"
-
 type VideoProps = {
   id: {
     videoId: string
@@ -19,22 +17,16 @@ type VideoProps = {
   }
 }
 
-const client = google.youtube({
-  version: "v3",
-  auth: import.meta.env.YOUTUBE_API_TOKEN,
-})
-
 async function getVideos(): Promise<VideoProps[]> {
-  const { data } = await client.search.list({
-    part: ["snippet"],
-    channelId: import.meta.env.YOUTUBE_CHANNEL_ID,
-    type: ["video"],
-    order: "date",
-    maxResults: 21,
-  })
+  const ENDPOINT = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${
+    import.meta.env.YOUTUBE_CHANNEL_ID
+  }&key=${
+    import.meta.env.YOUTUBE_API_TOKEN
+  }&type=video&order=date&maxResults=21`
+  const data = await fetch(ENDPOINT).then((r) => r.json())
 
   if (Array.isArray(data.items) && data.items.length > 1) {
-    const videos = data.items?.map((item) => ({
+    const videos = data.items?.map((item: any) => ({
       id: {
         videoId: item.id,
       },
