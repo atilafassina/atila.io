@@ -1,34 +1,61 @@
 ---
-import PageHeader from "~/components/page-header.astro";
-import PageIntro from "~/components/page-intro.astro";
-import VideoCard from "~/components/card-video.astro";
-import Layout from "~/layouts/layout.astro";
-
-type Thumbnail = {
-  url: string;
-  width: number;
-  height: number;
-};
+import PageHeader from "~/components/page-header.astro"
+import PageIntro from "~/components/page-intro.astro"
+import VideoCard from "~/components/card-video.astro"
+import Layout from "~/layouts/layout.astro"
+import { google } from "googleapis"
 
 type VideoProps = {
   id: {
-    videoId: string;
-  };
+    videoId: string
+  }
   snippet: {
-    title: string;
-    publishedAt: string;
-    description: string;
-    thumbnails: Record<"default" | "high" | "medium", Thumbnail>;
-  };
-};
-const getVideos = async (): Promise<VideoProps[]> => {
-  const resp = await fetch("https://youtube.atila.io/api");
-  return resp.json();
-};
-const videoList = await getVideos();
+    title: string
+    publishedAt: string
+    description: string
+    thumbnails: {
+      high: { url: string; width: number; height: number }
+    }
+  }
+}
+
+const client = google.youtube({
+  version: "v3",
+  auth: import.meta.env.YOUTUBE_API_TOKEN,
+})
+
+async function getVideos(): Promise<VideoProps[]> {
+  const { data } = await client.search.list({
+    part: ["snippet"],
+    channelId: import.meta.env.YOUTUBE_CHANNEL_ID,
+    type: ["video"],
+    order: "date",
+    maxResults: 21,
+  })
+
+  if (Array.isArray(data.items) && data.items.length > 1) {
+    const videos = data.items?.map((item) => ({
+      id: {
+        videoId: item.id,
+      },
+      snippet: {
+        title: item.snippet?.title,
+        publishedAt: item.snippet?.publishedAt,
+        description: item.snippet?.description,
+        thumbnails: item.snippet!.thumbnails!,
+      },
+    }))
+
+    return videos as VideoProps[]
+  } else {
+    return []
+  }
+}
+
+const videoList = await getVideos()
 const metas = {
   title: "Channel :: Atila",
-};
+}
 ---
 
 <Layout metas={metas}>
