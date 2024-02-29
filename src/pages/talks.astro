@@ -1,20 +1,21 @@
 ---
-import Layout from "../layouts/layout.astro";
-import PageHeader from "../components/page-header.astro";
-import PageIntro from "../components/page-intro.astro";
-import AppearanceCard from "../components/card-appearance.astro";
-import { fetchAppearances } from "../lib/db.server";
-import type { TalkType, YearlyMap } from "~/lib/schemas";
-import Glossary from "~/components/glossary.astro";
+import Layout from "../layouts/layout.astro"
+import PageHeader from "../components/page-header.astro"
+import PageIntro from "../components/page-intro.astro"
+import AppearanceCard from "../components/card-appearance.astro"
+import { fetchAppearances } from "../lib/db.server"
+import type { TalkType, YearlyMap } from "~/lib/schemas"
+import Glossary from "~/components/glossary.astro"
 
 const TALK_TYPES = [
   "podcast",
   "conference",
   "meetup",
   "workshop",
-] satisfies TalkType[];
+  "livestream",
+] satisfies TalkType[]
 
-const appearances = await fetchAppearances();
+const appearances = await fetchAppearances()
 
 const appearancesMapByYear = appearances.reduce<YearlyMap>(
   (mapped, appearance) => {
@@ -22,23 +23,23 @@ const appearancesMapByYear = appearances.reduce<YearlyMap>(
       const year =
         appearance.date === "TBD"
           ? "Announcing soon..."
-          : String(new Date(appearance.date).getFullYear());
+          : String(new Date(appearance.date).getFullYear())
 
       if (Array.isArray(mapped[year])) {
-        mapped[year]?.push(appearance);
+        mapped[year]?.push(appearance)
       } else if (!mapped[year]) {
-        mapped[year] = [appearance];
+        mapped[year] = [appearance]
       }
     }
 
-    return mapped;
+    return mapped
   },
-  {}
-);
+  {},
+)
 
 const metas = {
   title: "Talks :: Atila",
-};
+}
 ---
 
 <Layout metas={metas}>
@@ -64,7 +65,7 @@ const metas = {
             <h2 class="text-4xl w-11/12 mx-auto max-w-7xl">{year}</h2>
             <ul class="grid gap-x-10 gap-y-20 mt-16 sm:grid-cols-2 lg:grid-cols-3 px-4">
               {appearanceList?.map((appearance) =>
-                appearance ? <AppearanceCard {...appearance} /> : null
+                appearance ? <AppearanceCard {...appearance} /> : null,
               )}
             </ul>
           </section>

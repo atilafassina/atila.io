@@ -1,22 +1,21 @@
 ---
-import PageHeader from "~/components/page-header.astro";
-import WritingCard from "~/components/card-writing.astro";
-import PageIntro from "~/components/page-intro.astro";
-import Layout from "~/layouts/layout.astro";
-import { fetchArticles } from "~/lib/db.server";
-import Glossary from "~/components/glossary.astro";
-import type { ArticlePlatformType } from "~/lib/schemas";
+import PageHeader from "~/components/page-header.astro"
+import WritingCard from "~/components/card-writing.astro"
+import PageIntro from "~/components/page-intro.astro"
+import Layout from "~/layouts/layout.astro"
+import { fetchArticles } from "~/lib/db.server"
+import Glossary from "~/components/glossary.astro"
+import type { ArticlePlatformType } from "~/lib/schemas"
 
 const ARTICLE_PLATFORM = [
   "smashing",
   "dev-to",
   "css-tricks",
-  "xata",
-] satisfies ArticlePlatformType[];
+] satisfies ArticlePlatformType[]
 
-const articles = await fetchArticles();
+const articles = await fetchArticles()
 
-const metas = { title: "Writing :: Atila" };
+const metas = { title: "Writing :: Atila" }
 ---
 
 <Layout metas={metas}>
