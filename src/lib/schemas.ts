@@ -5,13 +5,13 @@ export const talkTypesSchema = z.union([
   z.literal("conference"),
   z.literal("meetup"),
   z.literal("podcast"),
+  z.literal("livestream"),
 ])
 
 export const articlePlatformSchema = z.union([
   z.literal("smashing"),
   z.literal("dev-to"),
   z.literal("css-tricks"),
-  z.literal("xata"),
 ])
 
 export const talkSchema = z.object({
@@ -39,7 +39,7 @@ export const articleListSchema = z.array(
     description: z.string().optional().nullable(),
     url: z.string().optional().nullable(),
     platform: articlePlatformSchema,
-  })
+  }),
 )
 
 export type ArticlePlatformType = z.infer<typeof articlePlatformSchema>

@@ -12,11 +12,10 @@ export function getCardBorder(type: TalkType | ArticlePlatformType) {
       return "from-yellow-500 via-amber-500 to-orange-500"
     case "smashing":
       return "from-red-500 via-amber-500 to-yellow-500"
-    case "xata":
-      return "from-cyan-500 via-pink-500 to-cyan-500"
     case "dev-to":
       return "from-zinc-200 via-sky-200 to-stone-200"
+    case "livestream":
     case "css-tricks":
-      return "from-amber-500 via-pink-500 to-cyan-500"
+      return "from-amber-500 via-emerald-500 to-cyan-500"
   }
 }

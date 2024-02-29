@@ -1,6 +1,6 @@
 <div align="center">
     <h1>
-    <img src="/public/og.png" alt="Atila Fassina's website">
+    <img src="/public/og.png" alt="Atila Fassina's website" />
     </h1>
 </div>
 
