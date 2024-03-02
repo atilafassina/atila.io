@@ -1,31 +1,31 @@
 ---
-import type { z } from "zod";
-import { getCardBorder } from "~/lib/get-card-border";
-import type { articlePlatformSchema, talkTypesSchema } from "~/lib/schemas";
+import type { z } from "zod"
+import { getCardBorder } from "~/lib/get-card-border"
+import type { articlePlatformSchema, talkTypesSchema } from "~/lib/schemas"
 
 export type Props = {
   types:
     | z.infer<typeof talkTypesSchema>[]
-    | z.infer<typeof articlePlatformSchema>[];
-};
+    | z.infer<typeof articlePlatformSchema>[]
+}
 
-const types = Astro.props.types;
+const types = Astro.props.types
 ---
 
 <aside class="mt-10 p-5 border border-zinc-800 inline-block rounded-xl">
-  <ul class="grid grid-cols-2 gap-x-5">
+  <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-flow-col gap-7">
     {
       types.map((type) => {
         return (
           <li>
             <i
               class={`w-8 h-8 bg-gradient-to-tr ${getCardBorder(
-                type
+                type,
               )} inline-block rounded-full`}
             />
-            <span class="relative -top-3">{type}</span>
+            <span class="relative -top-2">{type}</span>
           </li>
-        );
+        )
       })
     }
   </ul>
