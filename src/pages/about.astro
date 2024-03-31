@@ -2,6 +2,7 @@
 import photo from "../images/avatar-nobg.png"
 import PageHeader from "../components/page-header.astro"
 import Layout from "~/layouts/layout.astro"
+import { Image } from "astro:assets"
 
 const metas = {
   title: "About::Atila",
@@ -27,7 +28,7 @@ export const prerender = true
       <div
         class="inline-block w-48 p-2 mb-8 ml-8 overflow-hidden rounded-lg md:float-right bg-gradient-to-tr from-amber-300 via-rose-400 to-indigo-400"
       >
-        <img
+        <Image
           class="dark:bg-black bg-zinc-200 rounded-md"
           src={photo}
           alt="Atila Fassina"
