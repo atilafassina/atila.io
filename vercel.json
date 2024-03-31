@@ -44,7 +44,7 @@
       "destination": "https://twitter.com/AtilaFassina",
       "permanent": false
     },
-        {
+    {
       "source": "/x",
       "destination": "https://twitter.com/AtilaFassina",
       "permanent": false
@@ -72,6 +72,11 @@
     {
       "source": "/bluesky",
       "destination": "https://bsky.app/profile/atila.io",
+      "permanent": false
+    },
+    {
+      "source": "/gde",
+      "destination": "https://g.dev/atilaf",
       "permanent": false
     },
     {
