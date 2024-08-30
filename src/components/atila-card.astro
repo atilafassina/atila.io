@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets"
 import avatar from "../images/atila-2023.webp"
+import Solid from "../components/icons/solid.astro"
 import AtilaFassina from "./icons/atila-fassina.astro"
 ---
 
@@ -10,20 +11,20 @@ import AtilaFassina from "./icons/atila-fassina.astro"
   <div
     class="flex flex-col h-full text-center gap-y-3 lg:text-left animate-blur-in"
   >
-    <h1
-      class="dark:hover:bg-neutral-200 hover:bg-neutral-800 -ml-3 pt-3 px-3 rounded-sm dark:text-white text-zinc-800 dark:hover:text-black hover:text-white hover:transform hover:-rotate-6 transition-all"
-    >
+    <h1 class="dark:text-white text-zinc-800">
       <AtilaFassina class="sm:w-[411px] pb-4" />
       <span class="sr-only">Atila Fassina</span>
     </h1>
-    <h2
-      class="z-10 text-2xl sm:text-3xl dark:text-slate-50 text-slate-800 hover:transform hover:translate-x-2 transition-all"
-    >
-      DevRel <span class="opacity-40" aria-hidden>|</span> Tech Lead <span
-        class="opacity-40"
-        aria-hidden>|</span
-      > Educator
+    <h2 class="z-10 text-md sm:text-lg dark:text-slate-50 text-slate-800">
+      Developer
+      <span class="opacity-40" aria-hidden>|</span> Keynote Speaker
+      <span class="opacity-40" aria-hidden>|</span> Team Lead
     </h2>
+    <!-- <ul>
+      <li>
+        <Solid class="w-6" />
+      </li>
+    </ul> -->
   </div>
   <div
     class="block w-44 h-44 bg-white border-2 border-white rounded-full overflow-visible"
