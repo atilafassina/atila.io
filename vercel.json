@@ -83,6 +83,11 @@
       "source": "/sponsor",
       "destination": "https://github.com/sponsors/atilafassina",
       "permanent": false
+    },
+    {
+      "source": "/quantum",
+      "destination": "https://github.com/atilafassina/quantum",
+      "permanent": false
     }
   ]
 }
