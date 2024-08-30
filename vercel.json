@@ -88,6 +88,16 @@
       "source": "/quantum",
       "destination": "https://github.com/atilafassina/quantum",
       "permanent": false
+    },
+    {
+      "source": "/workshops",
+      "destination": "https://atila.io/talks",
+      "permanent": false
+    },
+    {
+      "source": "/workshop",
+      "destination": "https://atila.io/talks",
+      "permanent": false
     }
   ]
 }
