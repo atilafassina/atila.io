@@ -4,6 +4,7 @@ import Twitter from "~/components/icons/twitter.astro"
 import Github from "~/components/icons/github.astro"
 import Linkedin from "~/components/icons/linkedin.astro"
 import Mastodon from "~/components/icons/mastodon.astro"
+import Bluesky from "./icons/bluesky.astro"
 ---
 
 <footer class="animte-slide-up sm:order-3">
@@ -13,7 +14,15 @@ import Mastodon from "~/components/icons/mastodon.astro"
         <Twitter
           class="block relative -top-[0.2em] dark:text-zinc-400 text-zinc-700 text-3xl dark:hover:text-neutral-200 dark:focus:text-neutral-200 hover:text-neutral-600 focus:text-neutral-600 transform translate-y-0 hover:-translate-y-1 hover:scale-105 focus:-translate-y-1 focus:scale-105 transition-all"
         />
-        <span class="sr-only">twitter</span>
+        <span class="sr-only">X, formerly Twitter</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://atila.io/bsky" rel="me noopener noreferrer">
+        <Bluesky
+          class="dark:text-zinc-400 text-zinc-700 w-6 h-6 dark:hover:text-blue-300 dark:focus:text-blue-300 hover:text-sky-500 focus:text-sky-500 transform translate-y-0 hover:-translate-y-1 hover:scale-105 focus:-translate-y-1 focus:scale-105 transition-all"
+        />
+        <span class="sr-only">BlueSky</span>
       </a>
     </li>
     <li>
