@@ -1,11 +1,11 @@
 ---
-import ThemeToggler from "~/components/theme-toggler.astro";
-import A from "./icons/a.astro";
-const items = ["Channel", "Talks", "Writing", "About"]; //, 'Uses']
+import ThemeToggler from "~/components/theme-toggler.astro"
+import A from "./icons/a.astro"
+const items = ["Channel", "Talks", "Writing", "About"] //, 'Uses']
 const activeStyle = (isActive: boolean) =>
-  isActive ? "active-special-underline" : "";
+  isActive ? "active-special-underline" : ""
 
-const pathname = new URL(Astro.request.url).pathname;
+const pathname = new URL(Astro.request.url).pathname
 ---
 
 <nav
@@ -20,20 +20,20 @@ const pathname = new URL(Astro.request.url).pathname;
   >
     {
       items.map((item) => {
-        const path = "/" + item.toLowerCase();
+        const path = "/" + item.toLowerCase()
 
         return (
           <li class="py-5">
             <a
               href={path}
               class={`rounded-sm  block py-2 text-center px-4 relative special-underline ${activeStyle(
-                pathname === path
+                pathname === path,
               )}`}
             >
               {item}
             </a>
           </li>
-        );
+        )
       })
     }
   </ul>
