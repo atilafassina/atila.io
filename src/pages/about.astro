@@ -14,12 +14,12 @@ export const prerender = true
 <Layout metas={metas}>
   <header class="w-11/12 mx-auto max-w-7xl">
     <PageHeader>About: Atila</PageHeader>
-    <strong class="block mb-16 text-3xl text-slate-400">
+    <strong class="block mb-16 text-2xl dark:text-slate-400 text-slate-600">
       Sharing what I learn and trying to make coding simpler.
     </strong>
   </header>
   <div class="w-11/12 mx-auto max-w-7xl">
-    <article class="mt-8 text-2xl leading-8 max-w-prose">
+    <article class="text-xl leading-8 max-w-prose text-neutral-300">
       <p class="mb-8">
         I'm a self-taught developer pushing code since 2011, I have worked in
         teams of every size and across 3 different continents. I'm a <a
@@ -27,22 +27,21 @@ export const prerender = true
           target="_blank"
           rel="noopener noreferrer"
           title="Atila's profile page on Google Developer Expert Network"
-          class="dark:text-rose-400 text-red-500 hover:underline hover:decoration-dotted hover:underline-offset-2"
+          class="text-neutral-500 dark:text-white underline decoration-dotted hover:underline-offset-2"
           >GDE for Web Technologies</a
-        >, a <strong>SolidJS DX team member</strong>, and a <strong
-          >Developer Advocate for Tauri</strong
-        >
-        .
+        >, a <a
+          class="text-neutral-500 dark:text-white underline decoration-dotted hover:underline-offset-2"
+          href="https://solidjs.com"
+          target="_blank"
+          rel="nooopener">SolidJS</a
+        > DX team member, and a <a
+          class="text-neutral-500 dark:text-white underline decoration-dotted hover:underline-offset-2"
+          href="https://tauri.app"
+          target="_blank"
+          rel="nooopener">Tauri</a
+        > Working Group participant.
       </p>
-      <div
-        class="inline-block w-48 p-2 mb-8 ml-8 overflow-hidden rounded-lg md:float-right bg-gradient-to-tr from-amber-300 via-rose-400 to-indigo-400"
-      >
-        <Image
-          class="dark:bg-black bg-zinc-200 rounded-md"
-          src={photo}
-          alt="Atila Fassina"
-        />
-      </div>
+
       <p class="mb-8">
         Content creation is a driving force and my favourite learning strategy.
         I write articles on{" "}
@@ -51,7 +50,7 @@ export const prerender = true
           target="_blank"
           rel="noopener noreferrer"
           title="Atila's author page on Smashing Magazine"
-          class="dark:text-amber-200 text-amber-500 hover:underline hover:decoration-dotted hover:underline-offset-2"
+          class="text-neutral-500 dark:text-white underline decoration-dotted hover:underline-offset-2"
         >
           Smashing Magazine
         </a>
@@ -66,9 +65,9 @@ export const prerender = true
           target="_blank"
           rel="noopener noreferrer"
           title="Atila's twitter profile"
-          class="dark:text-blue-200 text-cyan-500 hover:underline hover:decoration-dotted hover:underline-offset-2"
+          class="text-neutral-500 dark:text-white underline decoration-dotted hover:underline-offset-2"
         >
-          twitter
+          X (aka twitter)
         </a>{" "}
         direct or public message.
       </p>
