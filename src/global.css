@@ -9,6 +9,21 @@
     @apply outline-1 outline-amber-500 outline-dotted;
   }
 
+  .sand {
+    background-image: url("/sand.webp");
+  }
+
+  .sandy {
+    background: radial-gradient(
+      rgba(230, 230, 230, 0.8) 50%,
+      rgba(230, 230, 230, 0)
+    );
+  }
+
+  .dark .sandy {
+    background: radial-gradient(rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0));
+  }
+
   @keyframes bkg {
     0% {
       background-position: 0% 50%;

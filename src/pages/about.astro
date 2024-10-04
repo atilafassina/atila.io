@@ -3,6 +3,7 @@ import photo from "../images/avatar-nobg.png"
 import PageHeader from "../components/page-header.astro"
 import Layout from "~/layouts/layout.astro"
 import { Image } from "astro:assets"
+import PageIntro from "~/components/page-intro.astro"
 
 const metas = {
   title: "About::Atila",
@@ -14,12 +15,9 @@ export const prerender = true
 <Layout metas={metas}>
   <header class="w-11/12 mx-auto max-w-7xl">
     <PageHeader>About: Atila</PageHeader>
-    <strong class="block mb-16 text-2xl dark:text-slate-400 text-slate-600">
-      Sharing what I learn and trying to make coding simpler.
-    </strong>
   </header>
-  <div class="w-11/12 mx-auto max-w-7xl">
-    <article class="text-xl leading-8 max-w-prose text-neutral-300">
+  <div class="w-11/12 mx-auto max-w-7xl dark:text-neutral-300 text-neutral-800">
+    <article class="text-xl leading-8 max-w-prose">
       <p class="mb-8">
         I'm a self-taught developer pushing code since 2011, I have worked in
         teams of every size and across 3 different continents. I'm a <a
