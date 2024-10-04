@@ -22,11 +22,11 @@
   }
 
   .bg-dark {
-    background: theme(colors.black)
+    background: theme(colors.neutral.900)
       linear-gradient(
         45deg,
         theme(colors.zinc.800),
-        theme(colors.black),
+        theme(colors.neutral.900),
         theme(colors.stone.800)
       );
   }
