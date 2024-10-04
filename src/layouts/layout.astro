@@ -6,6 +6,7 @@ import "@fontsource/jost/400.css"
 import type { Props as MetaProps } from "~/components/metas.astro"
 import Metas from "~/components/metas.astro"
 import MenuMobile from "~/components/menu-mobile.astro"
+import Posthog from "~/lib/posthog.astro"
 
 export type Props = {
   metas?: MetaProps["metas"]
@@ -18,7 +19,6 @@ const { metas } = Astro.props
   import.meta.env.PROD && (
     <script
       is:inline
-      is
       defer
       src="https://static.cloudflareinsights.com/beacon.min.js"
       data-cf-beacon='{"token": "6f7dd11497db4b548570eb8ebf1f5b10", "spa": false}'
@@ -78,6 +78,7 @@ const { metas } = Astro.props
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <Metas metas={metas} />
+    <Posthog />
   </head>
   <body
     class="sand bg-neutral-100 bg-[length:22px_22px] dark:bg-[length:400%_400%] dark:bg-dark dark:animate-bkg-move"
