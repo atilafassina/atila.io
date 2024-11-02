@@ -35,6 +35,11 @@
       "permanent": false
     },
     {
+      "source": "/subscribe",
+      "destination": "https://www.youtube.com/AtilaIO?sub_confirmation=1",
+      "permanent": false
+    },
+    {
       "source": "/mastodon",
       "destination": "https://mas.to/@atila",
       "permanent": false
