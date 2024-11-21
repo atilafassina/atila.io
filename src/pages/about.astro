@@ -1,9 +1,6 @@
 ---
-import photo from "../images/avatar-nobg.png"
 import PageHeader from "../components/page-header.astro"
 import Layout from "~/layouts/layout.astro"
-import { Image } from "astro:assets"
-import PageIntro from "~/components/page-intro.astro"
 
 const metas = {
   title: "About::Atila",
@@ -16,56 +13,55 @@ export const prerender = true
   <header class="w-11/12 mx-auto max-w-7xl">
     <PageHeader>About: Atila</PageHeader>
   </header>
-  <div class="w-11/12 mx-auto max-w-7xl dark:text-neutral-300 text-neutral-800">
+  <div class="w-11/12 mx-auto max-w-7xl dark:text-neutral-300 text-neutral-900">
     <article class="text-xl leading-8 max-w-prose">
-      <p class="mb-8">
-        I'm a self-taught developer pushing code since 2011, I have worked in
-        teams of every size and across 3 different continents. I'm a <a
+      <p class="mb-8 text-neutral-400">
+        I'm Atila Fassina, an Italian developer from Brazil living in Germany.
+        Like my origins, my career is also a soup of different skillsets put
+        together: I'm a technical lead, an individual contributor, a manager,
+        and a content creator - it's hard for me to define myself in a single
+        role because I enjoy connecting to people to deliver what they need from
+        me. I like seeing myself as essentially a catalyst, I like helping folks
+        output their best energy and effort by putting them in a position of
+        success and creating synergy with others.
+      </p>
+
+      <p class="mb-8 text-neutral-400">
+        I am part of the <a
+          class="text-white dark:text-white"
+          href="https://solidjs.com"
+          target="_blank"
+          rel="nooopener">SolidJS DX team</a
+        > and of the <a
+          class="text-white dark:text-white"
+          href="https://tauri.app"
+          target="_blank"
+          rel="nooopener">Tauri Working Group</a
+        >, also a <a
           href="https://g.dev/atilaf"
           target="_blank"
           rel="noopener noreferrer"
           title="Atila's profile page on Google Developer Expert Network"
-          class="text-neutral-500 dark:text-white underline decoration-dotted hover:underline-offset-2"
-          >GDE for Web Technologies</a
-        >, a <a
-          class="text-neutral-500 dark:text-white underline decoration-dotted hover:underline-offset-2"
-          href="https://solidjs.com"
-          target="_blank"
-          rel="nooopener">SolidJS</a
-        > DX team member, and a <a
-          class="text-neutral-500 dark:text-white underline decoration-dotted hover:underline-offset-2"
-          href="https://tauri.app"
-          target="_blank"
-          rel="nooopener">Tauri</a
-        > Working Group participant.
+          class="text-white dark:text-white"
+          >Google Developer Expert for Web Technologies</a
+        >. I like sharing everything I know and this is why I have written
+        articles in big outlets such as Smashing Magazine and CSS-Tricks, I have
+        offered paid and free workshops to the community, engaged in podcasts,
+        spoken in many conferences across Europe, Brazil, and the US. A bit more
+        recently I have started my youtube channel which has seen a nice steady
+        growth and received good feedback on the quality of the guides.
       </p>
 
-      <p class="mb-8">
-        Content creation is a driving force and my favourite learning strategy.
-        I write articles on{" "}
-        <a
-          href="https://smashingmagazine.com/author/atila-fassina/"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Atila's author page on Smashing Magazine"
-          class="text-neutral-500 dark:text-white underline decoration-dotted hover:underline-offset-2"
-        >
-          Smashing Magazine
-        </a>
-        , speak at meetups and conferences both online and offline, and record a
-        code-related videos. I am particularly interested in Serverless, Developer
-        Tooling, and the React ecosystem.
-      </p>
-      <p class="mb-8">
+      <p class="mb-8 text-neutral-400">
         The fastest way to find me is via{" "}
         <a
-          href="https://twitter.com/atilafassina/"
+          href="https://atila.io/bsky"
           target="_blank"
           rel="noopener noreferrer"
-          title="Atila's twitter profile"
-          class="text-neutral-500 dark:text-white underline decoration-dotted hover:underline-offset-2"
+          title="Atila's bsky profile"
+          class="text-white dark:text-white"
         >
-          X (aka twitter)
+          BlueSky
         </a>{" "}
         direct or public message.
       </p>
