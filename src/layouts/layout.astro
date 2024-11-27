@@ -76,7 +76,6 @@ const { metas } = Astro.props
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
     <Metas metas={metas} />
     <Posthog />
   </head>
@@ -91,7 +90,7 @@ const { metas } = Astro.props
         <MenuMobile />
       </div>
       <main
-        class="grid place-items-center mb-32 text-left animate-blur-in font-light order-1 sm:order-2"
+        class="flex flex-col items-center mb-32 text-left animate-blur-in font-light order-1 sm:order-2"
       >
         <slot />
       </main>

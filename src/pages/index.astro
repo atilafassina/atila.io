@@ -1,12 +1,24 @@
 ---
-import Layout from "../layouts/layout.astro";
-import AtilaCard from "../components/atila-card.astro";
+import Layout from "../layouts/layout.astro"
+import AtilaCard from "../components/atila-card.astro"
+import "../global.css"
+import { Projects } from "~/components/projects"
+import { getRepositories, getRepository } from "~/lib/github"
 
-import "../global.css";
+const solidFetcher = (repo: string) => getRepository(repo, "solidjs")
+const defaultFetcher = (repo: string) => getRepository(repo, "atilafassina")
 
-export const prerender = true;
+const repositories = (
+  await Promise.all([
+    getRepositories(["quantum", "shieldwall", "pulsar"], defaultFetcher),
+    getRepositories(["solid", "solid-start", "solid-docs"], solidFetcher),
+  ])
+).flat()
+
+export const prerender = true
 ---
 
 <Layout>
   <AtilaCard />
+  <Projects repositories={repositories} />
 </Layout>

@@ -1,14 +1,14 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    /*
-     * @TODO
-     * waiting astro config to update
-     */
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
     "ignoreDeprecations": "5.0",
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]
-    }
+    },
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js"
   }
 }
