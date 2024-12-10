@@ -1,6 +1,8 @@
 export interface VideoProps {
   id: {
-    videoId: string
+    videoId: {
+      videoId: string
+    }
   }
   snippet: {
     title: string

@@ -1,26 +1,6 @@
 ---
 import { monthIndex, months } from "~/lib/format-month.ts"
 
-export type VideoProps = {
-  id: {
-    videoId: string
-  }
-  snippet: {
-    title: string
-    publishedAt: string
-    description: string
-    thumbnails: {
-      high: {
-        url: string
-      }
-      medium: {
-        url: string
-      }
-    }
-  }
-}
-
-// const VideoCard: VideoCardProps = ({ id, snippet }) => {
 const { id, snippet } = Astro.props
 ---
 

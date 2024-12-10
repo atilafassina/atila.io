@@ -46,7 +46,7 @@ export function VideoHighlights(props: Props) {
                     class={`${idx === 0 ? "grid md:grid-cols-[auto,1fr] gap-10" : ""}`}
                   >
                     <a
-                      href={`https://youtube.com/watch?v=${video().id.videoId}`}
+                      href={`https://youtube.com/watch?v=${video().id.videoId.videoId}`}
                       rel="noreferrer noopener"
                       target="_blank"
                       class="group/website flex text-sm font-mono dark:text-neutral-300 text-neutral-500 dark:hover/website:text-neutral-200 hover:text-neutral-950 transition-colors"
