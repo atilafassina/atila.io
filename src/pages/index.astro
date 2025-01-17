@@ -6,6 +6,7 @@ import { Projects } from "~/components/projects"
 import { VideoHighlights } from "~/components/video-highlights"
 import { getRepositories, getRepository } from "~/lib/github"
 import { getVideos } from "~/lib/video-getter"
+import { SectionHeader } from "~/components/section-header"
 
 const solidFetcher = (repo: string) => getRepository(repo, "solidjs")
 const defaultFetcher = (repo: string) => getRepository(repo, "atilafassina")
@@ -24,6 +25,12 @@ export const prerender = true
 
 <Layout>
   <AtilaCard />
-  <VideoHighlights videos={videoList} />
+  <section class="max-w-4xl w-full px-5 overflow-hidden pb-36">
+    <SectionHeader
+      title="Latest Videos"
+      subtitle="Creating short technical videos on Youtube has been an important outlet for my creativity. I have learnt tenfold what I have taught, here are my latest pieces."
+    />
+    <VideoHighlights videos={videoList} />
+  </section>
   <Projects repositories={repositories} />
 </Layout>
