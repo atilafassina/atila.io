@@ -1,9 +1,9 @@
 ---
 import PageHeader from "~/components/page-header.astro"
 import PageIntro from "~/components/page-intro.astro"
-import VideoCard from "~/components/card-video.astro"
 import Layout from "~/layouts/layout.astro"
 import { getVideos } from "~/lib/video-getter"
+import { VideoHighlights } from "~/components/video-highlights"
 
 const videoList = await getVideos(21)
 const metas = {
@@ -31,9 +31,7 @@ const metas = {
       .
     </PageIntro>
   </header>
-  <ul
-    class="grid max-w-[90rem] mx-auto sm:grid-cols-2 gap-16 mt-32 lg:grid-cols-3 px-5"
-  >
-    {videoList.map((videoProps) => <VideoCard {...videoProps} />)}
-  </ul>
+  <section class="px-6">
+    <VideoHighlights videos={videoList} maxCols={3} />
+  </section>
 </Layout>
