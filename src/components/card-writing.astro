@@ -1,18 +1,18 @@
 ---
-import { getCardBorder } from "~/lib/get-card-border";
+import { getCardBorder } from "~/lib/get-card-border"
 
 const {
   title,
   description,
-  platform,
+  platform_name,
   url,
   published_at: publishAt,
-} = Astro.props;
+} = Astro.props
 ---
 
 <li
   class={` cta-hover-sm p-2 rounded-lg bg-gradient-to-tr ${getCardBorder(
-    platform
+    platform_name,
   )}`}
 >
   <div class="p-6 dark:bg-black bg-zinc-50 rounded-md h-[100%]">
