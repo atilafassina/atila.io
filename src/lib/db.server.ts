@@ -1,29 +1,22 @@
+import { neon } from "@neondatabase/serverless"
 import { articleListSchema, talkListSchema } from "./schemas"
-import { createClient } from "@supabase/supabase-js"
 
-const supabase = createClient(
-  import.meta.env.SUPABASE_DB,
-  import.meta.env.SUPABASE_KEY
-)
+const sql = neon(import.meta.env.NEON_DB_URL)
 
 export const fetchArticles = async () => {
-  const { data: records } = await supabase
-    .from("articles")
-    .select("*")
-    .order("published_at", {
-      ascending: false,
-    })
+  const records = await sql`
+    SELECT * FROM articles
+    ORDER BY published_at DESC
+  `
 
   return articleListSchema.parse(records)
 }
 
 export const fetchAppearances = async () => {
-  const { data: records } = await supabase
-    .from("talks")
-    .select("*")
-    .order("date", {
-      ascending: false,
-    })
+  const records = await sql`
+    SELECT * FROM talks
+    ORDER BY date_string DESC
+  `
 
   return talkListSchema.parse(records)
 }

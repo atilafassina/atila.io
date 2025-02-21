@@ -1,29 +1,37 @@
 ---
-import type { z } from "zod";
-import { getCardBorder } from "~/lib/get-card-border";
-import { talkSchema } from "~/lib/schemas";
-import ResourceLink from "./talk-resource-link.astro";
+import type { z } from "zod"
+import { getCardBorder } from "~/lib/get-card-border"
+import { talkSchema } from "~/lib/schemas"
+import ResourceLink from "./talk-resource-link.astro"
 
-export type Props = z.infer<typeof talkSchema>;
+export type Props = z.infer<typeof talkSchema>
 
-const talkProps = Astro.props;
+const talkProps = Astro.props
 
-const { name, title, type, description, recording, slides, date, url } =
-  await talkSchema.parseAsync(talkProps);
+const {
+  event_name,
+  title,
+  kind,
+  description,
+  recording,
+  slides,
+  date_string,
+  url,
+} = await talkSchema.parseAsync(talkProps)
 
-const eventDate = date === "TBD" ? null : new Date(date);
+const eventDate = date_string === "TBD" ? null : new Date(date_string)
 ---
 
 <li
   class={`cta-hover-sm p-2 relative rounded-lg bg-gradient-to-tr ${getCardBorder(
-    type
+    kind,
   )}`}
 >
   <div class="flex justify-between pr-4 absolute -top-8 w-full">
     <strong
       class="font-mono text-lg font-normal dark:text-slate-400 text-slate-600"
     >
-      {name}
+      {event_name}
     </strong>
     {
       eventDate !== null && (
@@ -31,7 +39,7 @@ const eventDate = date === "TBD" ? null : new Date(date);
           class="font-mono text-md dark:text-slate-400 text-slate-600"
           date-time={eventDate.toISOString()}
         >
-          {date}
+          {date_string}
         </time>
       )
     }
