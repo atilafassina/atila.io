@@ -6,7 +6,13 @@ import { Projects } from "~/components/projects"
 import { VideoHighlights } from "~/components/video-highlights"
 import { getRepositories, getRepository } from "~/lib/github"
 import { getVideos } from "~/lib/video-getter"
+import { fetchAppearances } from "~/lib/db.server"
 import { SectionHeader } from "~/components/section-header"
+import { UpcomingEvents } from "~/components/upcoming-events"
+import type { talkSchema } from "~/lib/schemas"
+import type { z } from "zod"
+
+type TalkProps = z.infer<typeof talkSchema>
 
 const solidFetcher = (repo: string) => getRepository(repo, "solidjs")
 const defaultFetcher = (repo: string) => getRepository(repo, "atilafassina")
@@ -20,6 +26,71 @@ const repositories = (
 
 const videoList = await getVideos(3)
 
+// Fetch and filter upcoming events with error handling
+let upcomingEvents: TalkProps[] = []
+
+try {
+  const allAppearances = await fetchAppearances()
+
+  upcomingEvents = allAppearances
+    .filter((event: TalkProps) => {
+      // Basic validation
+      if (!event || typeof event !== "object") {
+        console.warn("Invalid event object:", event)
+        return false
+      }
+
+      // Check required properties
+      if (!event.isFuture || !event.published) {
+        return false
+      }
+
+      // Validate date string
+      if (
+        !event.date_string ||
+        event.date_string === "TBD" ||
+        event.date_string === ""
+      ) {
+        return false
+      }
+
+      // Validate date format and ensure it's actually in the future
+      const dateRegex = /^\d{4}-\d{2}-\d{2}$/
+      if (!dateRegex.test(event.date_string)) {
+        console.warn(
+          "Invalid date format for event:",
+          event.id,
+          event.date_string,
+        )
+        return false
+      }
+
+      const eventDate = new Date(event.date_string)
+      const now = new Date()
+
+      if (isNaN(eventDate.getTime())) {
+        console.warn("Invalid date for event:", event.id, event.date_string)
+        return false
+      }
+
+      // Check if event is actually in the future (not just marked as isFuture)
+      if (eventDate <= now) {
+        return false
+      }
+
+      return true
+    })
+    .sort((a: TalkProps, b: TalkProps) => {
+      const dateA = new Date(a.date_string)
+      const dateB = new Date(b.date_string)
+      return dateA.getTime() - dateB.getTime()
+    })
+    .slice(0, 3)
+} catch (error) {
+  console.error("Failed to fetch upcoming events:", error)
+  upcomingEvents = []
+}
+
 export const prerender = true
 ---
 
@@ -32,5 +103,6 @@ export const prerender = true
     />
     <VideoHighlights videos={videoList} />
   </section>
+  <UpcomingEvents events={upcomingEvents} />
   <Projects repositories={repositories} />
 </Layout>
