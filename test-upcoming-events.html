@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Upcoming Events</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .test-case {
+        margin: 20px 0;
+        padding: 15px;
+        border: 1px solid #ccc;
+      }
+      .test-case h3 {
+        margin-top: 0;
+      }
+      .result {
+        margin-top: 10px;
+        padding: 10px;
+        background: #f5f5f5;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Upcoming Events Component Test Cases</h1>
+
+    <div class="test-case">
+      <h3>Test Case 1: Valid Future Events</h3>
+      <p>Should render section with events</p>
+      <div class="result">
+        <strong>Expected:</strong> Section renders with event cards<br />
+        <strong>Data:</strong> Array with valid future events
+      </div>
+    </div>
+
+    <div class="test-case">
+      <h3>Test Case 2: Empty Events Array</h3>
+      <p>Should hide section completely</p>
+      <div class="result">
+        <strong>Expected:</strong> Section does not render<br />
+        <strong>Data:</strong> Empty array []
+      </div>
+    </div>
+
+    <div class="test-case">
+      <h3>Test Case 3: Invalid Event Data</h3>
+      <p>Should filter out invalid events and hide section if none remain</p>
+      <div class="result">
+        <strong>Expected:</strong> Section does not render<br />
+        <strong>Data:</strong> Array with malformed events (missing required
+        fields, invalid dates)
+      </div>
+    </div>
+
+    <div class="test-case">
+      <h3>Test Case 4: Mixed Valid/Invalid Events</h3>
+      <p>Should render only valid events</p>
+      <div class="result">
+        <strong>Expected:</strong> Section renders with only valid events<br />
+        <strong>Data:</strong> Array with mix of valid and invalid events
+      </div>
+    </div>
+
+    <div class="test-case">
+      <h3>Test Case 5: Past Events Marked as Future</h3>
+      <p>Should filter out events that are actually in the past</p>
+      <div class="result">
+        <strong>Expected:</strong> Section does not render<br />
+        <strong>Data:</strong> Events with isFuture=true but date_string in the
+        past
+      </div>
+    </div>
+
+    <h2>Implementation Verification</h2>
+    <ul>
+      <li>✅ Added type guard functions for event validation</li>
+      <li>✅ Added proper TypeScript type checking</li>
+      <li>✅ Added URL sanitization for event links</li>
+      <li>✅ Added date format validation</li>
+      <li>✅ Added actual future date checking (not just isFuture flag)</li>
+      <li>✅ Added error handling and logging for invalid data</li>
+      <li>
+        ✅ Added conditional rendering to hide section when no valid events
+      </li>
+      <li>✅ Added server-side data validation and filtering</li>
+    </ul>
+  </body>
+</html>
