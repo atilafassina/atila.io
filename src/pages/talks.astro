@@ -17,7 +17,26 @@ const TALK_TYPES = [
 
 const appearances = await fetchAppearances()
 
-const appearancesMapByYear = appearances.reduce<YearlyMap>(
+const now = new Date()
+const upcoming = appearances
+  .filter((appearance: any) => {
+    if (!appearance.date_string || appearance.date_string === "TBD")
+      return false
+    const date = new Date(appearance.date_string)
+    return appearance.published && date > now
+  })
+  .sort(
+    (a: any, b: any) =>
+      new Date(a.date_string).getTime() - new Date(b.date_string).getTime(),
+  )
+
+const pastAppearances = appearances.filter((appearance: any) => {
+  if (!appearance.date_string || appearance.date_string === "TBD") return true
+  const date = new Date(appearance.date_string)
+  return !(appearance.published && date > now)
+})
+
+const appearancesMapByYear = pastAppearances.reduce<YearlyMap>(
   (mapped, appearance) => {
     if (appearance.date_string && appearance.published) {
       const year =
@@ -57,6 +76,18 @@ const metas = {
   </header>
 
   <section class="max-w-[90rem] mx-auto">
+    {
+      upcoming.length > 0 && (
+        <section class="my-20 max-w-[90rem] mx-auto">
+          <h2 class="text-4xl w-11/12 mx-auto max-w-7xl">Upcoming</h2>
+          <ul class="grid gap-x-10 gap-y-20 mt-16 sm:grid-cols-2 lg:grid-cols-3 px-4">
+            {upcoming.map((appearance: any) =>
+              appearance ? <AppearanceCard {...appearance} /> : null,
+            )}
+          </ul>
+        </section>
+      )
+    }
     {
       Object.entries(appearancesMapByYear)
         .reverse()
