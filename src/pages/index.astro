@@ -16,11 +16,13 @@ type TalkProps = z.infer<typeof talkSchema>
 
 const solidFetcher = (repo: string) => getRepository(repo, "solidjs")
 const defaultFetcher = (repo: string) => getRepository(repo, "atilafassina")
+const neonFetcher = (repo: string) => getRepository(repo, "neondatabase")
 
 const repositories = (
   await Promise.all([
-    getRepositories(["quantum", "shieldwall", "pulsar"], defaultFetcher),
     getRepositories(["solid", "solid-start", "solid-docs"], solidFetcher),
+    getRepositories(["shieldwall"], defaultFetcher),
+    getRepositories(["neondb-cli", "neonctl"], neonFetcher),
   ])
 ).flat()
 
@@ -103,6 +105,6 @@ export const prerender = true
     />
     <VideoHighlights videos={videoList} />
   </section>
-  <UpcomingEvents events={upcomingEvents} />
+  <UpcomingEvents events={upcomingEvents as TalkProps[]} />
   <Projects repositories={repositories} />
 </Layout>
