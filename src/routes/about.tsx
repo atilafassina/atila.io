@@ -34,7 +34,7 @@ export default function About() {
               rel="nooopener"
             >
               SolidJS Core Team
-            </a>
+            </a>{" "}
             and a{" "}
             <a
               href="https://g.dev/atilaf"

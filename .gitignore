@@ -3,6 +3,7 @@ dist/
 .output/
 .vercel
 .astro
+.vinxi
 
 # dependencies
 node_modules/

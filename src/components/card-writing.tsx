@@ -19,7 +19,7 @@ type Article = {
 export const CardWriting = (props: { article: Article }) => {
   return (
     <li
-      class={`cta-hover-sm p-2 rounded-lg bg-gradient-to-tr ${getCardBorder(
+      class={`cta-hover-sm p-1 rounded-lg bg-gradient-to-tr ${getCardBorder(
         props.article.platform_name
       )}`}
     >

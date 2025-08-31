@@ -19,7 +19,7 @@ export const Glossary = (props: Props) => {
               <i
                 class={`w-8 h-8 bg-gradient-to-tr ${getCardBorder(
                   type()
-                )} inline-block rounded-full`}
+                )} inline-block rounded-full mr-2`}
               />
               <span class="relative -top-2">{type()}</span>
             </li>

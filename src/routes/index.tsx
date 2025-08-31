@@ -38,6 +38,7 @@ export default function Home() {
   return (
     <MainLayout>
       <AtilaCard />
+
       <section class="max-w-4xl w-full px-5 overflow-hidden pb-36">
         <SectionHeader
           title="Latest Videos"

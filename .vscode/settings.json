@@ -3,7 +3,7 @@
     "tsx": "solid"
   },
   "catppuccin-icons.associations.files": {
-    "[sitemap.xml].ts": "xml",
-    "[robots.txt].ts": "robots"
+    "sitemap.xml.ts": "xml",
+    "robots.txt.ts": "robots"
   }
 }
