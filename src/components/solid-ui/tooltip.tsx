@@ -23,7 +23,7 @@ const TooltipContent = <T extends ValidComponent = "div">(
     <TooltipPrimitive.Portal>
       <TooltipPrimitive.Content
         class={cn(
-          "z-50 origin-[var(--kb-popover-content-transform-origin)] overflow-hidden rounded-md border dark:border-white/20 border-black/20 bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md animate-in fade-in-0 zoom-in-95",
+          "z-50 origin-[var(--kb-popover-content-transform-origin)] overflow-hidden rounded-sm border dark:bg-black bg-white dark:border-white/10 border-black/20 bg-popover px-3 py-1.5 text-sm dark:text-gray-400 text-black text-popover-foreground shadow-md animate-in fade-in-0 zoom-in-95",
           local.class
         )}
         {...others}

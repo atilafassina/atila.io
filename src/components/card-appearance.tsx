@@ -21,7 +21,7 @@ export const CardAppearance = (props: Props) => {
     props.date_string === "TBD" ? null : new Date(props.date_string);
   return (
     <li
-      class={`cta-hover-sm p-2 relative rounded-lg bg-gradient-to-tr ${getCardBorder(
+      class={`cta-hover-sm p-1 relative rounded-lg bg-gradient-to-tr ${getCardBorder(
         props.kind
       )}`}
     >
