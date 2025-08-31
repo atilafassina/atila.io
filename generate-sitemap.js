@@ -1,22 +1,20 @@
-import { readdir, writeFile, readFile } from "fs/promises";
+import { readdir, writeFile } from "fs/promises";
 import { resolve } from "path";
 
-const REGEX_PRERENDER = /const prerender = true/g;
 const root = process.cwd();
 
-async function isStaticRoute(fileName) {
-  const contents = await readFile(resolve(root, "src", "pages", fileName));
-  return REGEX_PRERENDER.test(contents);
+function isRoute(fileName) {
+  return !fileName.startsWith("[");
 }
 
 (async () => {
-  const files = await readdir(resolve(root, "src", "pages"));
+  const files = await readdir(resolve(root, "src", "routes"));
 
   const dynamicRoutes = await Promise.all(
     files.map(async (pageFile) => {
-      const isStatic = await isStaticRoute(pageFile);
-
-      return !isStatic && `https://atila.io/${pageFile.replace(".astro", "")}`;
+      return (
+        isRoute(pageFile) && `https://atila.io/${pageFile.replace(".tsx", "")}`
+      );
     })
   );
 

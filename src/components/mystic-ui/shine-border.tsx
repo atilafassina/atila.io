@@ -1,19 +1,19 @@
-import { cn } from "~/lib/tw-merge.ts"
-import { type ParentComponent, mergeProps } from "solid-js"
+import { cn } from "~/lib/tw-merge";
+import { type ParentComponent, mergeProps } from "solid-js";
 
 export interface ShineBorderProps {
-  borderRadius?: number
-  borderWidth?: number
-  class?: string
-  color?: string | string[]
-  duration?: number
+  borderRadius?: number;
+  borderWidth?: number;
+  class?: string;
+  color?: string | string[];
+  duration?: number;
 }
 
 export const ShineBorder: ParentComponent<ShineBorderProps> = (props) => {
   const localProps = mergeProps(
     { borderRadius: 8, borderWidth: 2, color: "#000000", duration: 14 },
-    props,
-  )
+    props
+  );
   return (
     <div
       style={{
@@ -38,5 +38,5 @@ export const ShineBorder: ParentComponent<ShineBorderProps> = (props) => {
       />
       {localProps.children}
     </div>
-  )
-}
+  );
+};
