@@ -1,0 +1,74 @@
+import { Meta, Title } from "@solidjs/meta";
+import { MainLayout } from "~/components/main-layout";
+import { PageHeader } from "~/components/page-header";
+
+export default function About() {
+  return (
+    <MainLayout>
+      <Title>About: Atila</Title>
+      <Meta property="og:title" content="About: Atila" />
+      <Meta property="twitter:title" content="About: Atila" />
+      <header class="w-11/12 mx-auto max-w-7xl">
+        <PageHeader>About: Atila</PageHeader>
+      </header>
+      <div class="w-11/12 mx-auto max-w-7xl dark:text-neutral-300 text-neutral-800">
+        <article class="text-xl leading-8 max-w-prose text-neutral-800 dark:text-neutral-400">
+          <p class="mb-8">
+            I'm Atila Fassina, an Italian developer from Brazil living in
+            Germany. Like my origins, my career is also a soup of different
+            skillsets put together: I'm a technical lead, an individual
+            contributor, a manager, and a content creator - it's hard for me to
+            define myself in a single role because I enjoy connecting to people
+            to deliver what they need from me. I like seeing myself as
+            essentially a catalyst, I like helping folks output their best
+            energy and effort by putting them in a position of success and
+            creating synergy with others.
+          </p>
+
+          <p class="mb-8">
+            I am part of the{" "}
+            <a
+              class="text-neutral-950 dark:text-white font-thin"
+              href="https://solidjs.com"
+              target="_blank"
+              rel="nooopener"
+            >
+              SolidJS Core Team
+            </a>
+            and a{" "}
+            <a
+              href="https://g.dev/atilaf"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Atila's profile page on Google Developer Expert Network"
+              class="text-neutral-950 dark:text-white font-thin"
+            >
+              Google Developer Expert for Web Technologies
+            </a>
+            . I like sharing everything I know and this is why I have written
+            articles in big outlets such as Smashing Magazine and CSS-Tricks, I
+            have offered paid and free workshops to the community, engaged in
+            podcasts, spoken in many conferences across Europe, Brazil, and the
+            US. A bit more recently I have started my youtube channel which has
+            seen a nice steady growth and received good feedback on the quality
+            of the guides.
+          </p>
+
+          <p class="mb-8">
+            The fastest way to find me is via{" "}
+            <a
+              href="https://atila.io/bsky"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Atila's bsky profile"
+              class="text-neutral-950 dark:text-white font-thin"
+            >
+              BlueSky
+            </a>{" "}
+            direct or public message.
+          </p>
+        </article>
+      </div>
+    </MainLayout>
+  );
+}
