@@ -1,15 +1,15 @@
-import { cn } from "~/lib/tw-merge.ts"
-import { type Component, mergeProps } from "solid-js"
+import { cn } from "~/lib/tw-merge";
+import { type Component, mergeProps } from "solid-js";
 
 export interface BorderBeamProps {
-  anchor?: number
-  borderWidth?: number
-  class?: string
-  colorFrom?: string
-  colorTo?: string
-  delay?: number
-  duration?: number
-  size?: number
+  anchor?: number;
+  borderWidth?: number;
+  class?: string;
+  colorFrom?: string;
+  colorTo?: string;
+  delay?: number;
+  duration?: number;
+  size?: number;
 }
 
 export const BorderBeam: Component<BorderBeamProps> = (props) => {
@@ -23,8 +23,8 @@ export const BorderBeam: Component<BorderBeamProps> = (props) => {
       duration: 5,
       size: 200,
     },
-    props,
-  )
+    props
+  );
 
   return (
     <div
@@ -45,8 +45,8 @@ export const BorderBeam: Component<BorderBeamProps> = (props) => {
 
         // pseudo styles
         "after:absolute after:aspect-square after:w-[var(--size)] after:animate-border-beam after:[animation-delay:var(--delay)] after:[background:linear-gradient(to_left,var(--color-from),var(--color-to),transparent)] after:[offset-anchor:var(--anchor)_50%] after:[offset-path:rect(0_auto_auto_0_round_var(--size))]",
-        localProps.class,
+        localProps.class
       )}
     />
-  )
-}
+  );
+};

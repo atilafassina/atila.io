@@ -1,44 +1,45 @@
 {
-  "name": "atila.io",
+  "name": "example-basic",
   "type": "module",
-  "version": "9.0.0",
-  "private": true,
-  "license": "ISC",
-  "author": {
-    "name": "Atila Fassina",
-    "url": "https://atila.io"
-  },
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "node generate-sitemap && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start",
+    "version": "vinxi version"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.11",
-    "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/solid-js": "^5.0.3",
-    "@astrojs/tailwind": "^5.1.4",
-    "@astrojs/vercel": "^8.0.2",
-    "@fontsource/jost": "^5.1.2",
-    "@neondatabase/serverless": "^0.10.4",
-    "astro": "^5.1.7",
+    "@fontsource-variable/jost": "^5.2.6",
+    "@fontsource/jost": "^5.2.6",
+    "@kobalte/core": "^0.13.11",
+    "@neondatabase/serverless": "^1.0.1",
+    "@solidjs/meta": "^0.29.4",
+    "@solidjs/router": "^0.15.0",
+    "@solidjs/start": "^1.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-solid": "^0.471.0",
-    "octokit": "^4.1.0",
-    "solid-js": "^1.9.4",
-    "tailwind-merge": "^2.6.0",
+    "lucide-solid": "^0.540.0",
+    "octokit": "^5.0.3",
+    "posthog-js": "^1.261.0",
+    "solid-js": "^1.9.5",
+    "tailwind-merge": "^3.3.1",
     "tailwindcss": "^3.4.17",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.24.1"
+    "vinxi": "^0.5.7",
+    "zod": "^4.0.17"
+  },
+  "engines": {
+    "node": ">=22"
   },
   "devDependencies": {
-    "prettier": "^3.4.2",
-    "prettier-plugin-astro": "^0.14.1",
-    "sharp": "^0.33.5",
-    "typescript": "^5.7.3"
+    "@eslint/css": "^0.10.0",
+    "@eslint/js": "^9.33.0",
+    "@typescript-eslint/parser": "^8.40.0",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.33.0",
+    "eslint-plugin-solid": "^0.14.5",
+    "globals": "^16.3.0",
+    "postcss": "^8.5.6",
+    "typescript-eslint": "^8.40.0"
   },
-  "packageManager": "pnpm@10.12.1+sha512.f0dda8580f0ee9481c5c79a1d927b9164f2c478e90992ad268bbb2465a736984391d6333d2c327913578b2804af33474ca554ba29c04a8b13060a717675ae3ac"
+  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
 }
