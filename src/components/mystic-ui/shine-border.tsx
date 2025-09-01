@@ -1,25 +1,25 @@
-import { cn } from "~/lib/tw-merge.ts"
-import { type ParentComponent, mergeProps } from "solid-js"
+import { cn } from "~/lib/tw-merge";
+import { type ParentComponent, mergeProps } from "solid-js";
 
 export interface ShineBorderProps {
-  borderRadius?: number
-  borderWidth?: number
-  class?: string
-  color?: string | string[]
-  duration?: number
+  borderRadius?: number;
+  borderWidth?: number;
+  class?: string;
+  color?: string | string[];
+  duration?: number;
 }
 
 export const ShineBorder: ParentComponent<ShineBorderProps> = (props) => {
   const localProps = mergeProps(
     { borderRadius: 8, borderWidth: 2, color: "#000000", duration: 14 },
-    props,
-  )
+    props
+  );
   return (
     <div
       style={{
         "--border-radius": `${localProps.borderRadius}px`,
       }}
-      class={cn("relative rounded-[--border-radius]", localProps.class)}
+      class={cn("relative rounded-[--border-radius] group", localProps.class)}
     >
       <div
         style={{
@@ -34,9 +34,9 @@ export const ShineBorder: ParentComponent<ShineBorderProps> = (props) => {
               : localProps.color
           },transparent,transparent)`,
         }}
-        class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out before:absolute before:inset-0 before:size-full before:rounded-[--border-radius] before:p-[--border-width] before:will-change-[background-position] before:content-[''] before:![-webkit-mask-composite:xor] before:![mask-composite:exclude] before:[background-image:--background-radial-gradient] before:[background-size:300%_300%] before:[mask:--mask-linear-gradient] motion-safe:before:animate-shine"
+        class="pointer-events-none before:absolute before:inset-0 before:size-full before:rounded-[--border-radius] before:p-[--border-width] before:will-change-[background-position] before:content-[''] before:![-webkit-mask-composite:xor] before:![mask-composite:exclude] group-hover:before:[background-image:--background-radial-gradient] before:[background-size:300%_300%] before:[mask:--mask-linear-gradient] group-hover:motion-safe:before:animate-shine"
       />
       {localProps.children}
     </div>
-  )
-}
+  );
+};

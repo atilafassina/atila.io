@@ -1,9 +1,9 @@
-import defaultTheme from "tailwindcss/defaultTheme.js"
+import defaultTheme from "tailwindcss/defaultTheme.js";
 
-import { type Config } from "tailwindcss"
+import { type Config } from "tailwindcss";
 
 export default {
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  content: ["./src/**/*.{js,jsx,md,mdx,ts,tsx}"],
   darkMode: ["variant", [".dark &", '[data-kb-theme="dark"] &']],
   theme: {
     container: {
@@ -15,7 +15,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["JostVariable", ...defaultTheme.fontFamily.sans],
+        sans: ["Jost Variable", ...defaultTheme.fontFamily.mono],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -149,5 +149,6 @@ export default {
       },
     },
   },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;

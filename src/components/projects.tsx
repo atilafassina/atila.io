@@ -1,5 +1,5 @@
-import { Index, Show } from "solid-js"
-import type { Repository } from "~/lib/github.ts"
+import { Index, Show } from "solid-js";
+import type { Repository } from "~/lib/github";
 import {
   Card,
   CardContent,
@@ -7,13 +7,14 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "./solid-ui/card.tsx"
-import { SquareArrowOutUpRight, StarIcon } from "lucide-solid"
-import { SectionHeader } from "./section-header.tsx"
-import { ShineBorder } from "./mystic-ui/shine-border.tsx"
+} from "~/components/solid-ui/card";
+import StarIcon from "lucide-solid/icons/star";
+import SquareArrowOutUpRight from "lucide-solid/icons/square-arrow-out-up-right";
+import { ShineBorder } from "./mystic-ui/shine-border";
+import { SectionHeader } from "./section-header";
 
 interface Props {
-  repositories: Repository[]
+  repositories: Repository[];
 }
 
 export function Projects(props: Props) {
@@ -91,5 +92,5 @@ export function Projects(props: Props) {
         </Index>
       </ul>
     </section>
-  )
+  );
 }
