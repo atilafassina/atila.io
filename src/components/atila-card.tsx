@@ -22,7 +22,7 @@ export const AtilaCard = () => {
         </h2>
         <ul class="flex gap-4 justify-center lg:justify-start">
           <li class="grayscale hover:grayscale-0 transition-all">
-            <Tooltip>
+            <Tooltip openDelay={0}>
               <TooltipTrigger>
                 <img class="w-9 relative -top-0.5" src="/solidstart.svg" />
               </TooltipTrigger>
@@ -42,7 +42,7 @@ export const AtilaCard = () => {
             </Tooltip>
           </li>
           <li class="grayscale hover:grayscale-0 transition-all">
-            <Tooltip>
+            <Tooltip openDelay={0}>
               <TooltipTrigger>
                 <img class="w-7" src="/gde.svg" />
               </TooltipTrigger>
