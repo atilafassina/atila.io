@@ -5,17 +5,6 @@ import { TalkResourceLink } from "./talk-resource-link";
 
 export type Props = z.infer<typeof talkSchema>;
 
-// const {
-//   event_name,
-//   title,
-//   kind,
-//   description,
-//   recording,
-//   slides,
-//   date_string,
-//   url,
-// } = await talkSchema.parseAsync(talkProps);
-
 export const CardAppearance = (props: Props) => {
   const eventDate = () =>
     props.date_string === "TBD" ? null : new Date(props.date_string);
