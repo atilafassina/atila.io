@@ -1,5 +1,5 @@
 {
-  "name": "example-basic",
+  "name": "atila-io",
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",
