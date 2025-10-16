@@ -6,10 +6,10 @@ export default defineConfig({
     preset: "cloudflare-module",
     cloudflare: {
       deployConfig: true,
-      nodeCompat: true
+      nodeCompat: true,
     },
-    prerender: {
-      crawlLinks: true,
-    },
+    // prerender: {
+    //   crawlLinks: true,
+    // },
   },
 });
