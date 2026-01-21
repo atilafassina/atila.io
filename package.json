@@ -2,45 +2,45 @@
   "name": "atila-io",
   "type": "module",
   "scripts": {
-    "dev": "vinxi dev",
-    "build": "vinxi build",
-    "start": "vinxi start",
-    "version": "vinxi version"
+    "dev": "vite dev",
+    "build": "vite build",
+    "start": "vite preview"
   },
   "dependencies": {
-    "@fontsource-variable/jost": "^5.2.6",
-    "@fontsource/jost": "^5.2.6",
+    "@fontsource-variable/jost": "^5.2.8",
+    "@fontsource/jost": "^5.2.8",
     "@kobalte/core": "^0.13.11",
-    "@neondatabase/serverless": "^1.0.1",
+    "@neondatabase/serverless": "^1.0.2",
     "@solidjs/meta": "^0.29.4",
-    "@solidjs/router": "^0.15.0",
-    "@solidjs/start": "^1.2.0",
+    "@solidjs/router": "^0.15.4",
+    "@solidjs/start": "2.0.0-alpha.1",
+    "@solidjs/vite-plugin-nitro-2": "^0.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-solid": "^0.540.0",
-    "octokit": "^5.0.3",
-    "posthog-js": "^1.261.0",
+    "lucide-solid": "^0.562.0",
+    "octokit": "^5.0.5",
+    "posthog-js": "^1.333.0",
     "shieldwall": "^0.4.0",
-    "solid-js": "^1.9.5",
-    "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^3.4.17",
+    "solid-js": "^1.9.10",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^3.4.0",
     "tailwindcss-animate": "^1.0.7",
-    "vinxi": "^0.5.7",
-    "zod": "^4.0.17"
+    "vite": "^7.3.1",
+    "zod": "^4.3.5"
   },
   "engines": {
-    "node": ">=22"
+    "node": "24"
   },
   "devDependencies": {
-    "@eslint/css": "^0.10.0",
-    "@eslint/js": "^9.33.0",
-    "@typescript-eslint/parser": "^8.40.0",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^9.33.0",
+    "@eslint/css": "^0.14.1",
+    "@eslint/js": "^9.39.2",
+    "@typescript-eslint/parser": "^8.53.1",
+    "autoprefixer": "^10.4.23",
+    "eslint": "^9.39.2",
     "eslint-plugin-solid": "^0.14.5",
-    "globals": "^16.3.0",
+    "globals": "^17.0.0",
     "postcss": "^8.5.6",
-    "typescript-eslint": "^8.40.0"
+    "typescript-eslint": "^8.53.1"
   },
-  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
+  "packageManager": "pnpm@10.27.0+sha512.72d699da16b1179c14ba9e64dc71c9a40988cbdc65c264cb0e489db7de917f20dcf4d64d8723625f2969ba52d4b7e2a1170682d9ac2a5dcaeaab732b7e16f04a"
 }

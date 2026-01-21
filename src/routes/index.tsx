@@ -10,15 +10,13 @@ import { getVideos } from "~/lib/video-getter";
 
 const solidFetcher = (repo: string) => getRepository(repo, "solidjs");
 const defaultFetcher = (repo: string) => getRepository(repo, "atilafassina");
-const neonFetcher = (repo: string) => getRepository(repo, "neondatabase");
 
 const homeData = query(async () => {
   "use server";
 
   const projects = await Promise.all([
     await getRepositories(["solid", "solid-start", "solid-docs"], solidFetcher),
-    await getRepositories(["shieldwall"], defaultFetcher),
-    await getRepositories(["neondb", "neonctl"], neonFetcher),
+    await getRepositories(["shieldwall", "crudy"], defaultFetcher),
   ]);
 
   return {
