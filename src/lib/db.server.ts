@@ -1,7 +1,10 @@
 import { neon } from "@neondatabase/serverless";
 import { articleListSchema, talkListSchema } from "./schemas";
 
-const sql = neon(process.env.NEON_DB_URL!);
+// const sql = neon(process.env.NEON_DB_URL!);
+const sql = neon(
+  "***REMOVED***"
+);
 
 export const fetchArticles = async () => {
   const records = await sql`

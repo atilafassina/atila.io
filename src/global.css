@@ -37,12 +37,12 @@
   }
 
   .bg-dark {
-    background: theme(colors.neutral.900)
+    background: theme("colors.neutral.900")
       linear-gradient(
         45deg,
-        theme(colors.zinc.800),
-        theme(colors.neutral.900),
-        theme(colors.stone.800)
+        theme("colors.zinc.800"),
+        theme("colors.neutral.900"),
+        theme("colors.stone.800")
       );
   }
 
@@ -108,14 +108,14 @@
     content: "";
     width: 100%;
     height: 4px;
-    background-color: theme(colors.zinc.900);
+    background-color: theme("colors.zinc.900");
     transition: transform 250ms linear;
     transform-origin: center;
   }
 
   .dark label[aria-controls="mobile-menu"]::before,
   .dark label[aria-controls="mobile-menu"]::after {
-    background-color: theme(colors.zinc.200);
+    background-color: theme("colors.zinc.200");
   }
 
   input:checked + label[aria-controls="mobile-menu"]::before {
