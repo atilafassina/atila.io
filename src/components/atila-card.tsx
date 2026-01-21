@@ -10,15 +10,11 @@ export const AtilaCard = () => {
           <span class="sr-only">Atila Fassina</span>
         </h1>
         <h2 class="z-10 text-md sm:text-lg dark:text-neutral-400 text-neutral-800">
-          Manager
+          Staff Engineer
           <span class="opacity-40" aria-hidden>
             |
           </span>{" "}
           Keynote Speaker
-          <span class="opacity-40" aria-hidden>
-            |
-          </span>{" "}
-          Developer
         </h2>
         <ul class="flex gap-4 justify-center lg:justify-start">
           <li class="grayscale hover:grayscale-0 transition-all">

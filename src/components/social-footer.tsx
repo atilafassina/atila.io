@@ -37,12 +37,6 @@ export const SocialFooter = () => {
           </a>
         </li>
         <li>
-          <a rel="me noopener noreferrer" href="https://atila.io/mastodon">
-            <Mastodon class="w-6 h-6 dark:text-zinc-400 text-zinc-600 dark:hover:text-zinc-100 hover:text-zinc-950 transform translate-y-0 hover:-translate-y-1 hover:scale-105 focus:-translate-y-1 focus:scale-105 transition-all" />
-            <span class="sr-only">Mastodon</span>
-          </a>
-        </li>
-        <li>
           <a rel="me noopener noreferrer" href="https://atila.io/linkedin">
             <LinkedIn class="w-6 h-6 dark:text-zinc-400 text-zinc-600 dark:hover:text-zinc-100 hover:text-zinc-950 transform translate-y-0 hover:-translate-y-1 hover:scale-105 focus:-translate-y-1 focus:scale-105 transition-all" />
             <span class="sr-only">LinkedIn</span>
