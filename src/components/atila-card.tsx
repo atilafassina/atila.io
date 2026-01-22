@@ -37,16 +37,6 @@ export const AtilaCard = () => {
               </TooltipContent>
             </Tooltip>
           </li>
-          <li class="grayscale hover:grayscale-0 transition-all">
-            <Tooltip openDelay={0}>
-              <TooltipTrigger>
-                <img class="w-7" src="/gde.svg" />
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>GDE: Web Tech</p>
-              </TooltipContent>
-            </Tooltip>
-          </li>
         </ul>
       </div>
       <div class="block w-44 h-44 bg-white border-2 border-white rounded-full overflow-hidden">
