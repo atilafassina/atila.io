@@ -1,3 +1,5 @@
+import { getMarkdownArticles } from "~/lib/article-loader.server";
+
 function getRoutes(): string[] {
   const routeModules = import.meta.glob("./*.tsx", { eager: true });
   
@@ -10,11 +12,20 @@ function getRoutes(): string[] {
     });
 }
 
-export function GET() {
+export async function GET() {
   const routes = getRoutes();
+  
+  // Get markdown articles for dynamic routes
+  const markdownArticles = await getMarkdownArticles();
+  const articleRoutes = markdownArticles.map(
+    (article) => `https://atila.io/writing/${article.slug}`
+  );
+
+  const allRoutes = [...routes, ...articleRoutes];
+
   const sitemap = `
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      ${routes
+      ${allRoutes
         .map(
           (route) => `
         <url>

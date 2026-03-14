@@ -3,6 +3,7 @@ import { CardWriting } from "~/components/card-writing";
 import { PageIntro } from "~/components/page-intro";
 import { MainLayout } from "~/components/main-layout";
 import { fetchArticles } from "~/lib/db.server";
+import { getMarkdownArticles } from "~/lib/article-loader.server";
 import { Glossary } from "~/components/glossary";
 import type { ArticlePlatformType } from "~/lib/schemas";
 import { createAsync, query, type RouteDefinition } from "@solidjs/router";
@@ -18,9 +19,26 @@ const ARTICLE_PLATFORM = [
 const articlesData = query(async () => {
   "use server";
 
-  const articles = await fetchArticles();
+  const dbArticles = await fetchArticles();
+  const markdownArticles = await getMarkdownArticles();
 
-  return articles;
+  // Convert markdown articles to match the CardWriting format
+  const localArticles = markdownArticles.map((article) => ({
+    title: article.title,
+    description: article.description,
+    platform_name: "local" as const,
+    url: `/writing/${article.slug}`,
+    published_at: article.publishedAt,
+  }));
+
+  // Combine and sort by date
+  const allArticles = [...dbArticles, ...localArticles].sort((a, b) => {
+    const dateA = a.published_at ? new Date(a.published_at).getTime() : 0;
+    const dateB = b.published_at ? new Date(b.published_at).getTime() : 0;
+    return dateB - dateA;
+  });
+
+  return allArticles;
 }, "articles");
 
 export const route = {

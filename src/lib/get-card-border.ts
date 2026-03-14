@@ -14,6 +14,8 @@ export function getCardBorder(type: TalkType | ArticlePlatformType) {
       return "from-red-500 via-amber-500 to-yellow-500"
     case "dev-to":
       return "from-zinc-200 via-sky-200 to-stone-200"
+    case "local":
+      return "from-violet-500 via-fuchsia-500 to-purple-500"
     case "livestream":
     case "css-tricks":
       return "from-amber-500 via-emerald-500 to-cyan-500"

@@ -12,6 +12,7 @@ export const articlePlatformSchema = z.union([
   z.literal("smashing"),
   z.literal("dev-to"),
   z.literal("css-tricks"),
+  z.literal("local"),
 ])
 
 export const talkSchema = z.object({
@@ -48,3 +49,25 @@ export type TalkType = z.infer<typeof talkTypesSchema>
 export type YearlyMap = {
   [key: string]: z.infer<typeof talkListSchema>
 }
+
+export const markdownArticleMetaSchema = z.object({
+  slug: z.string(),
+  title: z.string(),
+  description: z.string().optional(),
+  publishedAt: z.string(),
+  tags: z.array(z.string()).optional(),
+})
+
+export const markdownArticleSchema = markdownArticleMetaSchema.extend({
+  html: z.string(),
+  frontmatter: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    publishedAt: z.string(),
+    tags: z.array(z.string()).optional(),
+    author: z.string().optional(),
+  }),
+})
+
+export type MarkdownArticleMeta = z.infer<typeof markdownArticleMetaSchema>
+export type MarkdownArticle = z.infer<typeof markdownArticleSchema>

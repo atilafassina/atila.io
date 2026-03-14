@@ -24,6 +24,13 @@
     background: radial-gradient(rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0));
   }
 
+  /* Shiki dark mode support */
+  .dark .shiki,
+  .dark .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+  }
+
   @keyframes bkg {
     0% {
       background-position: 0% 50%;

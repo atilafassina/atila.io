@@ -10,6 +10,9 @@ export default defineConfig(({ mode }) => {
     plugins: [
       solidStart({
         middleware: "./src/middleware/index.ts",
+        serialization: {
+          mode: "json",
+        },
       }),
       nitro({
         preset: "vercel",

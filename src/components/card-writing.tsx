@@ -1,4 +1,5 @@
 import { getCardBorder } from "~/lib/get-card-border";
+import { A } from "@solidjs/router";
 
 type Article = {
   title?: string | null;
@@ -11,12 +12,15 @@ type Article = {
     | "livestream"
     | "smashing"
     | "dev-to"
-    | "css-tricks";
+    | "css-tricks"
+    | "local";
   url?: string | null;
   published_at?: string | null;
 };
 
 export const CardWriting = (props: { article: Article }) => {
+  const isLocal = () => props.article.platform_name === "local";
+
   return (
     <li
       class={`cta-hover-sm p-1 rounded-lg bg-gradient-to-tr ${getCardBorder(
@@ -36,13 +40,17 @@ export const CardWriting = (props: { article: Article }) => {
         </div>
         {typeof props.article.url === "string" && (
           <h2 class="mt-6 mb-3 text-2xl sm:text-3xl leading-snug hover:underline hover:decoration-dotted hover:decoration-slate-500">
-            <a
-              href={props.article.url}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              {props.article.title}
-            </a>
+            {isLocal() ? (
+              <A href={props.article.url}>{props.article.title}</A>
+            ) : (
+              <a
+                href={props.article.url}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {props.article.title}
+              </a>
+            )}
           </h2>
         )}
         <p class="mt-2 text-md sm:text-xl leading-8 dark:text-slate-300 text-slate-600">
