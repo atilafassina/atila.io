@@ -1,6 +1,6 @@
 import { solidStart } from "@solidjs/start/config";
 import { defineConfig, loadEnv } from "vite";
-import { nitroV2Plugin } from "@solidjs/vite-plugin-nitro-2";
+import { nitro } from "nitro/vite";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
       solidStart({
         middleware: "./src/middleware/index.ts",
       }),
-      nitroV2Plugin({
+      nitro({
         preset: "vercel",
         prerender: {
           crawlLinks: true,
