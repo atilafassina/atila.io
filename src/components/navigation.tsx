@@ -3,7 +3,7 @@ import { useLocation } from "@solidjs/router";
 import { Aicon } from "./icons/a";
 import { Index } from "solid-js";
 
-const items = ["Channel", "Talks", "Writing", "About"]; //, 'Uses']
+const items = ["Channel", "Talks", "Blog", "Writing", "About"]; //, 'Uses']
 const activeStyle = (isActive: boolean) =>
   isActive ? "active-special-underline" : "";
 
