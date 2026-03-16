@@ -26,3 +26,7 @@ pnpm-debug.log*
 pages.codegen.json
 
 .nitro
+
+# Dolt database files (added by bd init)
+.dolt/
+*.db
