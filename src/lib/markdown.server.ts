@@ -12,6 +12,7 @@ export interface MarkdownFrontmatter {
   publishedAt: string;
   tags?: string[];
   author?: string;
+  featured?: boolean;
 }
 
 export interface ParsedMarkdown {

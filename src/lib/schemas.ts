@@ -56,6 +56,7 @@ export const markdownArticleMetaSchema = z.object({
   description: z.string().optional(),
   publishedAt: z.string(),
   tags: z.array(z.string()).optional(),
+  featured: z.boolean().default(false),
 })
 
 export const markdownArticleSchema = markdownArticleMetaSchema.extend({

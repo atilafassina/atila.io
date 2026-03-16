@@ -38,6 +38,7 @@ export async function getMarkdownArticles(): Promise<MarkdownArticleMeta[]> {
           description: frontmatter.description,
           publishedAt: frontmatter.publishedAt,
           tags: frontmatter.tags,
+          featured: frontmatter.featured ?? false,
         };
       }),
     );
