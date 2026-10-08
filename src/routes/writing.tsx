@@ -1,19 +1,11 @@
 import { PageHeader } from "~/components/page-header";
-import { CardWriting } from "~/components/card-writing";
+import { ArticleRow } from "~/components/article-row";
 import { PageIntro } from "~/components/page-intro";
 import { MainLayout } from "~/components/main-layout";
 import { fetchArticles } from "~/lib/db.server";
-import { Glossary } from "~/components/glossary";
-import type { ArticlePlatformType } from "~/lib/schemas";
 import { createAsync, query, type RouteDefinition } from "@solidjs/router";
 import { Index, Show } from "solid-js";
 import { Meta, Title } from "@solidjs/meta";
-
-const ARTICLE_PLATFORM = [
-  "smashing",
-  "dev-to",
-  "css-tricks",
-] satisfies ArticlePlatformType[];
 
 const articlesData = query(async () => {
   "use server";
@@ -37,13 +29,13 @@ export default function Writing() {
       <Meta property="og:title" content="Writing: Atila" />
       <Meta property="twitter:title" content="Writing: Atila" />
 
-      <header class="w-11/12 mx-auto max-w-7xl">
-        <PageHeader>Articles & Notes</PageHeader>
+      <header class="pb-11 border-b border-rule">
+        <PageHeader kicker="Writing">Articles &amp; Notes</PageHeader>
         <PageIntro>
           Writing is my go-to alternative to sedimenting my knowledge. By
           writing I can anticipate my first questions and deepen my knowledge on
           topics, so when I reach a minimal degree of understanding I jump to a
-          text edi tor. This has helped me a lot in collaborating with wonderful
+          text editor. This has helped me a lot in collaborating with wonderful
           people who just motivate me in going further. My most recent articles
           can be found on{" "}
           <a
@@ -51,19 +43,18 @@ export default function Writing() {
             target="_blank"
             rel="noopener noreferrer"
             title="Atila's author page on Smashing Magazine"
-            class="dark:text-white text-black hover:underline hover:decoration-dotted hover:underline-offset-2"
+            class="text-ink underline underline-offset-[3px] hover:no-underline"
           >
             Smashing Magazine
           </a>
           .
         </PageIntro>
-        <Glossary types={ARTICLE_PLATFORM} />
       </header>
       <Show when={data()}>
-        {(cards) => (
-          <ul class="grid gap-16 mt-32 px-4 max-w-[90rem] mx-auto lg:grid-cols-2 2xl:grid-cols-3">
-            <Index each={cards()}>
-              {(article) => <CardWriting article={article()} />}
+        {(articles) => (
+          <ul class="py-11">
+            <Index each={articles()}>
+              {(article) => <ArticleRow article={article()} />}
             </Index>
           </ul>
         )}

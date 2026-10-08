@@ -2,7 +2,7 @@ import type { JSX } from "solid-js";
 
 export const PageIntro = (props: { children: JSX.Element }) => {
   return (
-    <p class="mt-16 text-xl leading-relaxed dark:text-neutral-400 text-neutral-500">
+    <p class="mt-6 text-[clamp(19px,2.4vw,24px)] leading-snug text-dim">
       {props.children}
     </p>
   );

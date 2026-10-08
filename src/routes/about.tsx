@@ -8,11 +8,11 @@ export default function About() {
       <Title>About: Atila</Title>
       <Meta property="og:title" content="About: Atila" />
       <Meta property="twitter:title" content="About: Atila" />
-      <header class="w-11/12 mx-auto max-w-7xl">
-        <PageHeader>About: Atila</PageHeader>
+      <header class="pb-11 border-b border-rule">
+        <PageHeader kicker="About">Atila Fassina</PageHeader>
       </header>
-      <div class="w-11/12 mx-auto max-w-7xl dark:text-neutral-300 text-neutral-800">
-        <article class="text-xl leading-8 max-w-prose text-neutral-800 dark:text-neutral-400">
+      <div class="py-11">
+        <article class="text-xl leading-8 text-dim">
           <p class="mb-8">
             I'm Atila Fassina, an Italian developer from Brazil living in
             Germany. Like my origins, my career is also a soup of different
@@ -28,7 +28,7 @@ export default function About() {
           <p class="mb-8">
             I am part of the{" "}
             <a
-              class="text-neutral-950 dark:text-white font-thin"
+              class="text-ink font-normal underline underline-offset-[3px] hover:no-underline"
               href="https://solidjs.com"
               target="_blank"
               rel="nooopener"
@@ -41,7 +41,7 @@ export default function About() {
               target="_blank"
               rel="noopener noreferrer"
               title="Atila's profile page on Google Developer Expert Network"
-              class="text-neutral-950 dark:text-white font-thin"
+              class="text-ink font-normal underline underline-offset-[3px] hover:no-underline"
             >
               Google Developer Expert for Web Technologies
             </a>
@@ -61,7 +61,7 @@ export default function About() {
               target="_blank"
               rel="noopener noreferrer"
               title="Atila's bsky profile"
-              class="text-neutral-950 dark:text-white font-thin"
+              class="text-ink font-normal underline underline-offset-[3px] hover:no-underline"
             >
               BlueSky
             </a>{" "}

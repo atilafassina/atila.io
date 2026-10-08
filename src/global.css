@@ -2,48 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Broadsheet: strict black & white. Light = white/black, dark = black/white. */
 @layer base {
-  *:focus,
-  *:focus::before,
-  *:focus::after {
-    @apply outline-1 outline-amber-500 outline-dotted;
+  :root {
+    color-scheme: light;
+    --bg: #ffffff;
+    --panel: #fafafa;
+    --ink: #0a0a0a;
+    --muted: #6b6b6b;
+    --line: rgba(0, 0, 0, 0.16);
+    --grid-a: rgba(0, 0, 0, 0.045);
+    --grid-b: rgba(0, 0, 0, 0.08);
+    --thumb1: #e8e8e8;
+    --thumb2: #bfbfbf;
   }
 
-  .sand {
-    background-image: url("/sand.webp");
+  .dark {
+    color-scheme: dark;
+    --bg: #0a0a0a;
+    --panel: #141414;
+    --ink: #f4f4f4;
+    --muted: #9a9a9a;
+    --line: rgba(255, 255, 255, 0.18);
+    --grid-a: rgba(255, 255, 255, 0.05);
+    --grid-b: rgba(255, 255, 255, 0.09);
+    --thumb1: #2a2a2a;
+    --thumb2: #474747;
   }
 
-  .sandy {
-    background: radial-gradient(
-      rgba(230, 230, 230, 0.8) 50%,
-      rgba(230, 230, 230, 0)
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans font-light antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+  }
+
+  /* faded millimeter-paper grid on a layer behind the content, masked so it only
+     shows toward the top & bottom of the page — the middle stays clear */
+  .grid-paper {
+    position: relative;
+    z-index: 0;
+  }
+
+  .grid-paper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: linear-gradient(
+        to right,
+        var(--grid-a) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, var(--grid-a) 1px, transparent 1px),
+      linear-gradient(to right, var(--grid-b) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-b) 1px, transparent 1px);
+    background-size: 6px 6px, 6px 6px, 60px 60px, 60px 60px;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      transparent 24%,
+      transparent 76%,
+      #000 100%
     );
-  }
-
-  .dark .sandy {
-    background: radial-gradient(rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0));
-  }
-
-  @keyframes bkg {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  .bg-dark {
-    background: theme("colors.neutral.900")
-      linear-gradient(
-        45deg,
-        theme("colors.zinc.800"),
-        theme("colors.neutral.900"),
-        theme("colors.stone.800")
-      );
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      transparent 24%,
+      transparent 76%,
+      #000 100%
+    );
   }
 
   ::-webkit-scrollbar {
@@ -51,7 +87,7 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-slate-100;
+    @apply bg-ink;
   }
 
   p {
@@ -59,69 +95,79 @@
   }
 
   ::selection {
-    -webkit-text-fill-color: theme("colors.slate.800");
-    @apply bg-orange-300  text-slate-800;
+    background: var(--ink);
+    -webkit-text-fill-color: var(--bg);
+    color: var(--bg);
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
   }
 }
 
 @layer components {
-  .cta-hover-md {
-    @apply hover:scale-125 focus:scale-125 ease-in-out duration-300;
+  /* animated shine border on hover */
+  .shine {
+    position: relative;
   }
 
-  .cta-hover-sm {
-    @apply hover:scale-110 focus:scale-105 ease-in-out duration-300;
-  }
-
-  .talk-resources span {
-    @apply inline-block transform translate-x-0 translate-y-0 transition-transform;
-  }
-
-  .talk-resources:hover span,
-  .talk-resources:focus span {
-    @apply transform translate-x-1 -translate-y-1;
-  }
-
-  .special-underline::after {
+  .shine::after {
     content: "";
-    border-color: currentColor;
-    margin-top: calc(1em + 15px);
-    @apply absolute left-0 inline-block w-full border-b-[1px] opacity-0 scale-0 transition-all duration-300;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background-image: radial-gradient(
+      transparent,
+      transparent,
+      var(--ink),
+      transparent,
+      transparent
+    );
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
   }
 
-  .active-special-underline::after,
-  .special-underline:hover::after {
-    @apply scale-100 opacity-100;
+  .shine:hover::after,
+  .shine:focus-within::after {
+    opacity: 1;
+    animation: shine 5s linear infinite;
   }
 
-  .safari-gradient-text {
-    -webkit-text-fill-color: transparent;
-    -webkit-box-decoration-break: clone;
+  @media (prefers-reduced-motion: reduce) {
+    .shine:hover::after,
+    .shine:focus-within::after {
+      animation: none;
+    }
   }
 
-  input:checked ~ #mobile-menu {
-    @apply translate-x-0;
+  /* mono uppercase label used for nav, chips, links */
+  .label {
+    @apply font-mono text-xs uppercase tracking-[0.06em];
   }
 
-  label[aria-controls="mobile-menu"]::before,
-  label[aria-controls="mobile-menu"]::after {
-    content: "";
-    width: 100%;
-    height: 4px;
-    background-color: theme("colors.zinc.900");
-    transition: transform 250ms linear;
-    transform-origin: center;
+  /* underlined mono link that inverts on hover */
+  .link-inv {
+    @apply label text-ink border-b-[1.5px] border-ink px-[5px] py-[3px] transition-colors duration-200;
   }
 
-  .dark label[aria-controls="mobile-menu"]::before,
-  .dark label[aria-controls="mobile-menu"]::after {
-    background-color: theme("colors.zinc.200");
-  }
-
-  input:checked + label[aria-controls="mobile-menu"]::before {
-    transform: rotate(45deg) translateY(0.5rem);
-  }
-  input:checked + label[aria-controls="mobile-menu"]::after {
-    transform: rotate(-45deg) translateY(-0.5rem);
+  .link-inv:hover,
+  .link-inv:focus-visible {
+    @apply bg-ink text-paper;
   }
 }

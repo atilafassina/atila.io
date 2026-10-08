@@ -15,7 +15,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Jost Variable", ...defaultTheme.fontFamily.mono],
+        sans: ["Jost Variable", ...defaultTheme.fontFamily.sans],
+        mono: ["JetBrains Mono Variable", ...defaultTheme.fontFamily.mono],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -67,6 +68,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        paper: "var(--bg)",
+        panel: "var(--panel)",
+        ink: "var(--ink)",
+        dim: "var(--muted)",
+        rule: "var(--line)",
       },
 
       animation: {

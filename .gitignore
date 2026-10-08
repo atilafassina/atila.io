@@ -4,6 +4,7 @@ dist/
 .vercel
 .astro
 .vinxi
+.isaac/
 
 # dependencies
 node_modules/

@@ -1,7 +1,8 @@
 import { Octokit } from "octokit";
 
 const octokit = new Octokit({
-  auth: process.env.GITHUB_TOKEN,
+  // empty/missing token → unauthenticated requests (lower rate limit) instead of a 401
+  auth: process.env.GITHUB_TOKEN || undefined,
 });
 
 export async function getRepository(repo: string, owner = "atilafassina") {
@@ -41,5 +42,43 @@ export async function getRepositories(
     return Promise.all(repo.map(async (r) => fetcher(r)));
   } else {
     return [await fetcher(repo)];
+  }
+}
+
+export type RepoSnapshot = {
+  stars: number;
+  version: string | null;
+  releasedAt: string | null;
+};
+
+/**
+ * Live numbers for a showcased repo. Returns `null` on any failure so the UI can
+ * hide the numbers instead of rendering misleading zeros.
+ */
+export async function getRepoSnapshot(
+  repo: string,
+  owner = "atilafassina",
+): Promise<RepoSnapshot | null> {
+  try {
+    const headers = { "X-GitHub-Api-Version": "2022-11-28" };
+    const [repository, release] = await Promise.all([
+      octokit.request("GET /repos/{owner}/{repo}", { owner, repo, headers }),
+      octokit
+        .request("GET /repos/{owner}/{repo}/releases/latest", {
+          owner,
+          repo,
+          headers,
+        })
+        .catch(() => null),
+    ]);
+
+    return {
+      stars: repository.data.stargazers_count,
+      version: release?.data.tag_name ?? null,
+      releasedAt: release?.data.published_at ?? null,
+    };
+  } catch (error) {
+    console.error(`Failed to fetch snapshot ${owner}/${repo}:`, error);
+    return null;
   }
 }

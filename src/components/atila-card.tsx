@@ -1,47 +1,42 @@
-import { AtilaFassina } from "./icons/atila-fassina";
-import { Tooltip, TooltipContent, TooltipTrigger } from "./solid-ui/tooltip";
-
 export const AtilaCard = () => {
   return (
-    <header class="max-w-5xl w-full grid grid-rows-2 place-items-center gap-y-5 pt-32 pb-48 px-5 lg:grid-cols-2 sm:my-0 lg:gap-x-14 lg:items-end lg:grid-rows-1 lg:relative lg:-right-14">
-      <div class="flex flex-col text-center gap-y-3 lg:text-left animate-blur-in">
-        <h1 class="dark:text-white text-zinc-800">
-          <AtilaFassina class="sm:w-[411px] pb-4 transition-all" />
-          <span class="sr-only">Atila Fassina</span>
+    <header class="grid md:grid-cols-[1fr_auto] gap-11 items-center pt-[50px] pb-[34px] border-b border-rule">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-[0.18em] text-dim">
+          Productivity &amp; Data-Intensive Apps
+        </p>
+        <h1 class="mt-3 mb-[18px] text-[clamp(52px,11vw,132px)] font-semibold leading-[0.92] tracking-[-0.05em]">
+          Atila
+          <br />
+          Fassina
+          <span class="sr-only"> — engineer and speaker</span>
         </h1>
-        <h2 class="z-10 text-md sm:text-lg dark:text-neutral-400 text-neutral-800">
-          Staff Engineer
-          <span class="opacity-40" aria-hidden>
-            |
-          </span>{" "}
-          Keynote Speaker
-        </h2>
-        <ul class="flex gap-4 justify-center lg:justify-start">
-          <li class="grayscale hover:grayscale-0 transition-all">
-            <Tooltip openDelay={0}>
-              <TooltipTrigger>
-                <img class="w-9 relative -top-0.5" src="/solidstart.svg" />
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>SolidStart Team Lead</p>
-              </TooltipContent>
-            </Tooltip>
+        <p class="text-[clamp(19px,2.4vw,24px)] text-dim max-w-[40ch]">
+          <b class="font-medium text-ink">Engineer</b> &amp;{" "}
+          <b class="font-medium text-ink">speaker</b> — building
+          productivity tools and data-intensive apps, with AI where it earns
+          its keep, not as a personality.
+        </p>
+        <ul class="flex flex-wrap items-center gap-x-4 gap-y-2.5 mt-[22px] font-mono text-xs uppercase tracking-[0.06em]">
+          <li class="border-[1.5px] border-ink px-[11px] py-[5px]">
+            SolidJS core team
           </li>
-          <li class="grayscale hover:grayscale-0 transition-all">
-            <Tooltip>
-              <TooltipTrigger>
-                <img class="w-7" src="/solidjs.svg" />
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Core team member</p>
-              </TooltipContent>
-            </Tooltip>
+          {/*
+          <li>
+            <a
+              href="/xavier"
+              class="block border-[1.5px] border-ink bg-ink text-paper px-[11px] py-[5px] transition-colors hover:bg-paper hover:text-ink focus-visible:bg-paper focus-visible:text-ink"
+            >
+              Building Xavier →
+            </a>
           </li>
+          */}
         </ul>
+        {/* <p class="mt-3 font-mono text-xs">currently: more on camera</p> */}
       </div>
-      <div class="block w-44 h-44 bg-white border-2 border-white rounded-full overflow-hidden">
+      <div class="order-first md:order-last w-[132px] h-[132px] md:w-[210px] md:h-[210px] rounded-full overflow-hidden border-2 border-ink bg-white shrink-0">
         <img
-          class="rounded-full grayscale-[50] scale-105 hover:scale-125 hover:grayscale-0 hover:cursor-none transition-all ease-in-out"
+          class="block w-full h-full object-cover object-[center_22%] grayscale scale-[1.06] hover:grayscale-0 hover:scale-[1.16] motion-safe:transition-all motion-safe:duration-500"
           src="/avatar-nobg.png"
           alt="Atila's face"
         />

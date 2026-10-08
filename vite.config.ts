@@ -28,7 +28,7 @@ export default defineConfig(({ mode }) => {
           "process.env.YOUTUBE_CHANNEL_ID": JSON.stringify(
             env.YOUTUBE_CHANNEL_ID,
           ),
-          "process.env.GITHUB_TOKEN": JSON.stringify(env.GITHUB_TOKEN),
+          "process.env.GITHUB_TOKEN": JSON.stringify(env.GITHUB_TOKEN ?? ""),
         },
       },
     },

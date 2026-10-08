@@ -15,11 +15,8 @@ export default createHandler(
             <link rel="icon" href="/favicon.ico" />
             {assets}
           </head>
-          <body class="sand bg-neutral-100 bg-[length:22px_22px] dark:bg-[length:400%_400%] dark:bg-dark dark:animate-bkg-move">
-            <div
-              id="app"
-              class="sand bg-neutral-100 bg-[length:22px_22px] dark:bg-[length:400%_400%] dark:bg-dark dark:animate-bkg-move"
-            >
+          <body>
+            <div id="app">
               {children}
             </div>
             {scripts}

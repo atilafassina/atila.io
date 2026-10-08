@@ -1,47 +1,49 @@
-import { clientOnly } from "@solidjs/start";
 import { useLocation } from "@solidjs/router";
-import { Aicon } from "./icons/a";
 import { Index } from "solid-js";
+import { Aicon } from "./icons/a";
+import { ThemeToggler } from "./theme-toggler";
 
-const items = ["Channel", "Talks", "Writing", "About"]; //, 'Uses']
-const activeStyle = (isActive: boolean) =>
-  isActive ? "active-special-underline" : "";
-
-const ThemeSelection = clientOnly(() =>
-  import("~/components/theme-toggler").then((mod) => ({
-    default: mod.ThemeToggler,
-  }))
-);
+export const navItems = ["Channel", "Talks", "Writing", "About"];
 
 export const Navigation = () => {
   const pathname = () => useLocation().pathname;
-  return (
-    <nav class="hidden sm:grid p-5 transition-colors grid-cols-[auto,1fr,auto] place-items-center max-w-[90rem] mx-auto dark:text-slate-300">
-      <a href="/" class="p-2 rounded-sm cta-hover-sm relative">
-        <Aicon class="w-16 h-16" />
-        <span class="sr-only">Atila</span>
-      </a>
-      <ul class="grid grid-flow-col gap-x-10 px-3 place-items-center mx-auto text-xl overflow-x-auto max-w-[90%]">
-        <Index each={items}>
-          {(item) => {
-            const path = "/" + item().toLowerCase();
 
-            return (
-              <li class="py-5">
-                <a
-                  href={path}
-                  class={`rounded-sm  block py-2 text-center px-4 relative special-underline ${activeStyle(
-                    pathname() === path
-                  )}`}
-                >
-                  {item()}
-                </a>
-              </li>
-            );
-          }}
-        </Index>
-      </ul>
-      <ThemeSelection />
+  return (
+    <nav class="flex items-center justify-between py-[26px] border-b-2 border-ink">
+      <a
+        href="/"
+        class="inline-flex items-center text-ink group"
+        aria-label="Atila Fassina — home"
+      >
+        <Aicon class="h-10 w-auto block transition-transform duration-200 group-hover:scale-[1.06]" />
+      </a>
+      <div class="flex items-center gap-6">
+        <ul class="hidden md:flex gap-[26px] label">
+          <Index each={navItems}>
+            {(item) => {
+              const path = () => "/" + item().toLowerCase();
+              return (
+                <li>
+                  <a
+                    href={path()}
+                    aria-current={
+                      pathname() === path() ? "page" : undefined
+                    }
+                    class={`text-ink pb-[3px] border-b-[1.5px] hover:border-ink ${
+                      pathname() === path()
+                        ? "border-ink"
+                        : "border-transparent"
+                    }`}
+                  >
+                    {item()}
+                  </a>
+                </li>
+              );
+            }}
+          </Index>
+        </ul>
+        <ThemeToggler />
+      </div>
     </nav>
   );
 };

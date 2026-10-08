@@ -28,27 +28,27 @@ export default function Channel() {
       <Meta property="og:title" content="Channel: Atila" />
       <Meta property="twitter:title" content="Channel: Atila" />
 
-      <header class="w-11/12 mx-auto max-w-7xl">
-        <PageHeader>Featured Videos</PageHeader>
+      <header class="pb-11 border-b border-rule">
+        <PageHeader kicker="Channel">Featured Videos</PageHeader>
         <PageIntro>
           I enjoy creating content, and I use teaching as a medium for me to
           learn new concepts. So I put effort in creating them for different
           medias, some content just works better in video. Check the channel and
-          subsbribe for more on{" "}
+          subscribe for more on{" "}
           <a
             href="https://youtube.com/atilaio"
             target="_blank"
             rel="noopener noreferrer"
             title="To AtilaIO Youtube Channel"
-            class="dark:text-red-400 text-red-700 hover:underline hover:decoration-dotted hover:underline-offset-2"
+            class="text-ink underline underline-offset-[3px] hover:no-underline"
           >
-            Youtube
+            YouTube
           </a>
           .
         </PageIntro>
       </header>
-      <section class="px-6">
-        <VideoHighlights videos={data()} maxCols={3} />
+      <section class="py-11">
+        <VideoHighlights videos={data()} />
       </section>
     </MainLayout>
   );

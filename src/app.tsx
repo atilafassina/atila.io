@@ -3,6 +3,7 @@ import { Router } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
 import { Suspense } from "solid-js";
 import "@fontsource-variable/jost";
+import "@fontsource-variable/jetbrains-mono";
 import "./global.css";
 import { isServer } from "solid-js/web";
 import posthog from "posthog-js";

@@ -1,21 +1,13 @@
 import { PageHeader } from "~/components/page-header";
 import { PageIntro } from "~/components/page-intro";
-import { CardAppearance } from "~/components/card-appearance";
+import { SectionHeader } from "~/components/section-header";
+import { TalkRow } from "~/components/talk-row";
 import { fetchAppearances } from "../lib/db.server";
-import type { TalkType, YearlyMap } from "~/lib/schemas";
-import { Glossary } from "~/components/glossary";
+import type { YearlyMap } from "~/lib/schemas";
 import { MainLayout } from "~/components/main-layout";
 import { createAsync, query, type RouteDefinition } from "@solidjs/router";
 import { Meta, Title } from "@solidjs/meta";
-import { Index, Show } from "solid-js";
-
-const TALK_TYPES = [
-  "podcast",
-  "conference",
-  "meetup",
-  "workshop",
-  "livestream",
-] satisfies TalkType[];
+import { Index } from "solid-js";
 
 const talksData = query(async () => {
   "use server";
@@ -78,55 +70,42 @@ export default function Talks() {
     initialValue: { upcoming: [], appearancesMapByYear: {} },
   });
 
+  const sections = () => [
+    ...(data().upcoming.length > 0
+      ? [["Upcoming", data().upcoming] as const]
+      : []),
+    ...Object.entries(data().appearancesMapByYear).reverse(),
+  ];
+
   return (
     <MainLayout>
       <Title>Talks: Atila</Title>
       <Meta property="og:title" content="Talks: Atila" />
       <Meta property="twitter:title" content="Talks: Atila" />
 
-      <header class="w-11/12 mx-auto max-w-7xl">
-        <PageHeader>Past & Future Appearances</PageHeader>
+      <header class="pb-11 border-b border-rule">
+        <PageHeader kicker="Speaking">Past &amp; Future Appearances</PageHeader>
         <PageIntro>
           Starting off as a self-taught developer made me value the community a
           lot. Sharing knowledge in conferences and meeting different people
-          with similar interests is one of my biggest passions in this carreers.
+          with similar interests is one of my biggest passions in this career.
           Therefore, I participate in conferences, podcasts, workshops, and
           meetups as often as I can.
         </PageIntro>
-
-        <Glossary types={TALK_TYPES} />
       </header>
 
-      <section class="max-w-[90rem] mx-auto">
-        {data().upcoming.length > 0 && (
-          <section class="my-20 max-w-[90rem] mx-auto">
-            <h2 class="text-4xl w-11/12 mx-auto max-w-7xl">Upcoming</h2>
-            <Show when={data().upcoming.length > 0}>
-              <ul class="grid gap-x-10 gap-y-20 mt-16 sm:grid-cols-2 lg:grid-cols-3 px-4">
-                <Index each={data().upcoming}>
-                  {(appearance) => <CardAppearance {...appearance()} />}
-                </Index>
-              </ul>
-            </Show>
+      <Index each={sections()}>
+        {(section) => (
+          <section class="py-11 border-b border-rule">
+            <SectionHeader title={String(section()[0])} />
+            <ul>
+              <Index each={section()[1]}>
+                {(appearance) => <TalkRow {...appearance()} />}
+              </Index>
+            </ul>
           </section>
         )}
-        {Object.entries(data().appearancesMapByYear)
-          .reverse()
-          .map(([year, appearanceList]) => (
-            <section class="my-20 max-w-[90rem] mx-auto">
-              <h2 class="text-4xl w-11/12 mx-auto max-w-7xl">{year}</h2>
-              <Show when={appearanceList}>
-                {(appearanceList) => (
-                  <ul class="grid gap-x-10 gap-y-20 mt-16 sm:grid-cols-2 lg:grid-cols-3 px-4">
-                    <Index each={appearanceList()}>
-                      {(appearance) => <CardAppearance {...appearance()} />}
-                    </Index>
-                  </ul>
-                )}
-              </Show>
-            </section>
-          ))}
-      </section>
+      </Index>
     </MainLayout>
   );
 }
